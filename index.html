@@ -130,7 +130,7 @@
     const encoded = base64Encode(script);
 
     // Bungkus hasil dengan eval dan decode base64 agar jika di run bisa dieksekusi
-    const obfuscatedScript = `eval(atob('${encoded}'))`;
+    const obfuscatedScript = `eval(Wynz('${encoded}'))`;
 
     output.value = obfuscatedScript;
   });
