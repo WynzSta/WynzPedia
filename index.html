@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<title>Virus Palsu - Malware Fake</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: radial-gradient(circle, #2b0000 0%, #000000 90%);
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ff3333;
+    user-select: none;
+    touch-action: none;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+  }
+  h1 {
+    font-size: 1.5rem;
+    margin: 5px 0 10px;
+    text-shadow: 0 0 10px #ff0000;
+    user-select: none;
+  }
+  p {
+    font-size: 1rem;
+    margin: 0 0 20px;
+    text-align: center;
+    user-select: none;
+    max-width: 320px;
+  }
+  #movingImage {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    user-select: none;
+    pointer-events: none;
+    filter: drop-shadow(0 0 5px #ff0000);
+    transition: transform 0.8s ease;
+  }
+  #overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.85);
+    color: #ff4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 2000;
+    font-size: 1.3rem;
+    padding: 20px;
+    user-select: none;
+  }
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 1.3rem;
+    }
+    p {
+      font-size: 0.9rem;
+      max-width: 90%;
+    }
+    #movingImage {
+      width: 80px;
+      height: 80px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div id="overlay">
+    <div>
+      <h2>PERINGATAN!</h2>
+      <p>Halaman ini terkunci selama 5 menit. Mohon tunggu...</p>
+    </div>
+  </div>
+  <h1>!!! WARNING !!!</h1>
+  <p>Komputer Anda terdeteksi ada malware berbahaya.<br />Mohon jangan matikan aplikasi ini dan segera hubungi teknisi IT!</p>
+
+  <img id="movingImage" src="https://upload.wikimedia.org/wikipedia/commons/5/55/Warning_icon.svg" alt="Fake Virus Warning" />
+
+<script>
+  const img = document.getElementById('movingImage');
+  const overlay = document.getElementById('overlay');
+
+  function getMaxPosition() {
+    const imgWidth = img.offsetWidth;
+    const imgHeight = img.offsetHeight;
+    const maxX = window.innerWidth - imgWidth;
+    const maxY = window.innerHeight - imgHeight;
+    return { maxX, maxY };
+  }
+
+  function moveImage() {
+    const { maxX, maxY } = getMaxPosition();
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+    img.style.transform = `translate(${randomX}px, ${randomY}px)`;
+  }
+
+  function startMoving() {
+    moveImage();
+    setInterval(moveImage, 900);
+  }
+
+  img.onselectstart = () => false;
+  img.oncontextmenu = e => e.preventDefault();
+
+  function preventDefault(e) {
+    e.preventDefault();
+  }
+
+  // disable scrolling and touch gestures
+  window.addEventListener('touchstart', preventDefault, { passive: false });
+  window.addEventListener('touchmove', preventDefault, { passive: false });
+  window.addEventListener('wheel', preventDefault, { passive: false });
+  window.addEventListener('keydown', function(e) {
+    const keysToPrevent = [32, 33, 34, 35, 36, 37, 38, 39, 40];
+    if (keysToPrevent.includes(e.keyCode)) {
+      e.preventDefault();
+    }
+  }, false);
+
+  startMoving();
+
+  window.addEventListener('resize', () => {
+    moveImage();
+  });
+
+  // Tampilkan overlay selama 5 menit, kemudian hilangkan
+  setTimeout(() => {
+    overlay.style.display = 'none';
+  }, 300000); // 300000 ms = 5 menit
+</script>
+</body>
+</html>
