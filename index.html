@@ -1,141 +1,74 @@
-<!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-<title>Virus Palsu - Malware Fake</title>
-<style>
-  html, body {
-    margin: 0; padding: 0; height: 100%;
-    background: radial-gradient(circle, #2b0000 0%, #000000 90%);
-    overflow: hidden;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #ff3333;
-    user-select: none;
-    touch-action: none;
-  }
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 10px;
-  }
-  h1 {
-    font-size: 1.5rem;
-    margin: 5px 0 10px;
-    text-shadow: 0 0 10px #ff0000;
-    user-select: none;
-  }
-  p {
-    font-size: 1rem;
-    margin: 0 0 20px;
-    text-align: center;
-    user-select: none;
-    max-width: 320px;
-  }
-  #movingImage {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    user-select: none;
-    pointer-events: none;
-    filter: drop-shadow(0 0 5px #ff0000);
-    transition: transform 0.8s ease;
-  }
-  #overlay {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.85);
-    color: #ff4444;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    z-index: 2000;
-    font-size: 1.3rem;
-    padding: 20px;
-    user-select: none;
-  }
-  @media (max-width: 600px) {
-    h1 {
-      font-size: 1.3rem;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login to Continue</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
     }
-    p {
-      font-size: 0.9rem;
-      max-width: 90%;
-    }
-    #movingImage {
-      width: 80px;
-      height: 80px;
-    }
-  }
-</style>
+  </style>
 </head>
-<body>
-  <div id="overlay">
-    <div>
-      <h2>PERINGATAN!</h2>
-      <p>Halaman ini terkunci selama 5 menit. Mohon tunggu...</p>
+<body class="min-h-screen bg-[url('https://placehold.co/600x800/1a1a1a/ff0000/png?text=Dark+Red+and+Black+Abstract+Background')] bg-cover bg-center flex flex-col justify-center items-center p-4">
+  <main class="bg-[#211b2e] rounded-xl max-w-md w-full p-8 space-y-8">
+    <h1 class="text-center text-[#d3d0d9] text-3xl font-semibold leading-tight">
+      Login to Continue
+    </h1>
+    <form class="space-y-6">
+      <div>
+        <label
+          for="username"
+          class="block text-[#4a5a7a] text-xs font-semibold mb-2 uppercase tracking-wide"
+          >Username or Email</label
+        >
+        <input
+          id="username"
+          type="text"
+          autocomplete="username"
+          class="w-full rounded-md bg-[#2a2f42] border border-transparent focus:border-[#4a5a7a] focus:ring-1 focus:ring-[#4a5a7a] text-[#d3d0d9] text-base px-4 py-3 placeholder-[#4a5a7a] outline-none"
+          placeholder="Enter your username or email"
+        />
+      </div>
+      <div>
+        <label
+          for="password"
+          class="block text-[#4a5a7a] text-xs font-semibold mb-2 uppercase tracking-wide"
+          >Password</label
+        >
+        <input
+          id="password"
+          type="password"
+          autocomplete="current-password"
+          class="w-full rounded-md bg-[#2a2f42] border border-transparent focus:border-[#4a5a7a] focus:ring-1 focus:ring-[#4a5a7a] text-[#d3d0d9] text-base px-4 py-3 placeholder-[#4a5a7a] outline-none"
+          placeholder="Enter your password"
+        />
+      </div>
+      <button
+        type="submit"
+        class="w-full bg-[#556a9a] text-white font-bold text-lg rounded-full py-4 hover:bg-[#4a5a7a] transition-colors"
+      >
+        Login
+      </button>
+    </form>
+    <div class="text-center text-[#4a4a4a] text-sm font-semibold tracking-wide">
+      FORGOT PASSWORD?
     </div>
-  </div>
-  <h1>!!! WARNING !!!</h1>
-  <p>Komputer Anda terdeteksi ada malware berbahaya.<br />Mohon jangan matikan aplikasi ini dan segera hubungi teknisi IT!</p>
-
-  <img id="movingImage" src="https://upload.wikimedia.org/wikipedia/commons/5/55/Warning_icon.svg" alt="Fake Virus Warning" />
-
-<script>
-  const img = document.getElementById('movingImage');
-  const overlay = document.getElementById('overlay');
-
-  function getMaxPosition() {
-    const imgWidth = img.offsetWidth;
-    const imgHeight = img.offsetHeight;
-    const maxX = window.innerWidth - imgWidth;
-    const maxY = window.innerHeight - imgHeight;
-    return { maxX, maxY };
-  }
-
-  function moveImage() {
-    const { maxX, maxY } = getMaxPosition();
-    const randomX = Math.floor(Math.random() * maxX);
-    const randomY = Math.floor(Math.random() * maxY);
-    img.style.transform = `translate(${randomX}px, ${randomY}px)`;
-  }
-
-  function startMoving() {
-    moveImage();
-    setInterval(moveImage, 900);
-  }
-
-  img.onselectstart = () => false;
-  img.oncontextmenu = e => e.preventDefault();
-
-  function preventDefault(e) {
-    e.preventDefault();
-  }
-
-  // disable scrolling and touch gestures
-  window.addEventListener('touchstart', preventDefault, { passive: false });
-  window.addEventListener('touchmove', preventDefault, { passive: false });
-  window.addEventListener('wheel', preventDefault, { passive: false });
-  window.addEventListener('keydown', function(e) {
-    const keysToPrevent = [32, 33, 34, 35, 36, 37, 38, 39, 40];
-    if (keysToPrevent.includes(e.keyCode)) {
-      e.preventDefault();
-    }
-  }, false);
-
-  startMoving();
-
-  window.addEventListener('resize', () => {
-    moveImage();
-  });
-
-  // Tampilkan overlay selama 5 menit, kemudian hilangkan
-  setTimeout(() => {
-    overlay.style.display = 'none';
-  }, 300000); // 300000 ms = 5 menit
-</script>
+    <div class="text-center text-[#4a4a4a] text-sm font-normal tracking-wide">
+      Pterodactyl®© 2015 - 2025
+    </div>
+  </main>
+  <footer class="mt-8 bg-[#2a2a3d] rounded-xl px-6 py-4 max-w-xs w-full flex items-center justify-center space-x-2">
+    <span class="text-[#7a7a8a] text-lg font-normal">Powered by</span>
+    <span class="flex items-center space-x-2 text-white font-bold text-lg">
+      <i class="fas fa-cube"></i>
+      <span>Nebula</span>
+    </span>
+  </footer>
 </body>
 </html>
