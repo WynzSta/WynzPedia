@@ -2,73 +2,124 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Login to Continue</title>
+  <title>Nik Parser</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
   />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-    body {
-      font-family: 'Inter', sans-serif;
+    /* Custom scrollbar styling to match the screenshot */
+    ::-webkit-scrollbar {
+      width: 8px;
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #00f0ff, #ff00c8, #fffc00);
+      border-radius: 9999px;
     }
   </style>
 </head>
-<body class="min-h-screen bg-[url('https://placehold.co/600x800/1a1a1a/ff0000/png?text=Dark+Red+and+Black+Abstract+Background')] bg-cover bg-center flex flex-col justify-center items-center p-4">
-  <main class="bg-[#211b2e] rounded-xl max-w-md w-full p-8 space-y-8">
-    <h1 class="text-center text-[#d3d0d9] text-3xl font-semibold leading-tight">
-      Login to Continue
-    </h1>
-    <form class="space-y-6">
-      <div>
-        <label
-          for="username"
-          class="block text-[#4a5a7a] text-xs font-semibold mb-2 uppercase tracking-wide"
-          >Username or Email</label
-        >
-        <input
-          id="username"
-          type="text"
-          autocomplete="username"
-          class="w-full rounded-md bg-[#2a2f42] border border-transparent focus:border-[#4a5a7a] focus:ring-1 focus:ring-[#4a5a7a] text-[#d3d0d9] text-base px-4 py-3 placeholder-[#4a5a7a] outline-none"
-          placeholder="Enter your username or email"
-        />
-      </div>
-      <div>
-        <label
-          for="password"
-          class="block text-[#4a5a7a] text-xs font-semibold mb-2 uppercase tracking-wide"
-          >Password</label
-        >
-        <input
-          id="password"
-          type="password"
-          autocomplete="current-password"
-          class="w-full rounded-md bg-[#2a2f42] border border-transparent focus:border-[#4a5a7a] focus:ring-1 focus:ring-[#4a5a7a] text-[#d3d0d9] text-base px-4 py-3 placeholder-[#4a5a7a] outline-none"
-          placeholder="Enter your password"
-        />
-      </div>
+<body class="bg-[#121b22] text-[#b0b0b0] font-sans min-h-screen flex justify-center items-start p-4">
+  <div class="max-w-md w-full rounded-2xl border border-[#1f2a33] bg-[#121b22] p-6 space-y-6 relative">
+    <button
+      aria-label="Close"
+      class="absolute top-6 right-6 w-10 h-10 flex justify-center items-center rounded-full bg-[#1f2a33] text-[#b0b0b0] hover:bg-[#2a3945] transition"
+      type="button"
+    >
+      <i class="fas fa-times"></i>
+    </button>
+
+    <div>
+      <h1 class="text-white font-extrabold text-lg leading-6 mb-1">Nik Parser</h1>
+      <p class="text-[#b0b0b0] text-sm leading-relaxed max-w-full">
+        NikParse is a tool to extract and analyze Indonesian National Identity Numbers (NIK), providing detailed information such as region, gender, and date of birth.
+      </p>
+      <hr class="border-t border-[#1f2a33] mt-4" />
+    </div>
+
+    <div class="bg-[#1f2a33] rounded-xl p-4 flex items-center space-x-3 max-w-full">
       <button
-        type="submit"
-        class="w-full bg-[#556a9a] text-white font-bold text-lg rounded-full py-4 hover:bg-[#4a5a7a] transition-colors"
+        aria-label="Copy URL"
+        class="w-9 h-9 flex justify-center items-center rounded-full bg-[#2a3945] text-[#b0b0b0] hover:bg-[#3a4a5a] transition shrink-0"
+        type="button"
       >
-        Login
+        <i class="far fa-copy"></i>
       </button>
-    </form>
-    <div class="text-center text-[#4a4a4a] text-sm font-semibold tracking-wide">
-      FORGOT PASSWORD?
+      <pre class="text-xs text-[#b0b0b0] font-mono overflow-x-auto whitespace-pre-wrap break-all leading-5 max-w-[calc(100%-40px)]">
+https://painzy-api.vercel.app/stalk/nik-parse?nik=
+      </pre>
     </div>
-    <div class="text-center text-[#4a4a4a] text-sm font-normal tracking-wide">
-      Pterodactyl®© 2015 - 2025
+
+    <div>
+      <p class="text-[#b0b0b0] text-sm mb-2 flex items-center space-x-2">
+        <span>📋</span>
+        <span>Response</span>
+      </p>
+      <div class="bg-[#1f2a33] rounded-xl p-4 max-w-full overflow-x-auto">
+        <button
+          aria-label="Copy Response"
+          class="w-9 h-9 flex justify-center items-center rounded-full bg-[#2a3945] text-[#b0b0b0] hover:bg-[#3a4a5a] transition mb-3"
+          type="button"
+        >
+          <i class="far fa-copy"></i>
+        </button>
+        <pre class="text-xs font-mono leading-5 max-w-[calc(100%-36px)] text-[#b0b0b0]">
+{
+  <span class="text-yellow-400">"status"</span>: <span class="text-green-500">true</span>,
+  <span class="text-yellow-400">"creator"</span>: <span class="text-green-500">"Painzy"</span>,
+  <span class="text-yellow-400">"result"</span>: {
+    <span class="text-yellow-400">"status"</span>: <span class="text-green-500">"success"</span>,
+    <span class="text-yellow-400">"pesan"</span>: <span class="text-green-500">"NIK valid"</span>,
+    <span class="text-yellow-400">"data"</span>: {
+      <span class="text-yellow-400">"nik"</span>: <span class="text-green-500">"3203126010970008"</span>,
+      <span class="text-yellow-400">"kelamin"</span>: <span class="text-green-500">"PEREMPUAN"</span>,
+      <span class="text-yellow-400">"lahir"</span>: <span class="text-green-500">"20/10/1997"</span>,
+      <span class="text-yellow-400">"provinsi"</span>: <span class="text-green-500">"JAWA BARAT"</span>,
+      <span class="text-yellow-400">"kotakab"</span>: <span class="text-green-500">"KAB. CIANJUR"</span>,
+      <span class="text-yellow-400">"kecamatan"</span>: <span class="text-green-500">"CIKALONGKULON"</span>,
+      <span class="text-yellow-400">"uniqcode"</span>: <span class="text-green-500">"0008"</span>,
+      <span class="text-yellow-400">"tambahan"</span>: {
+        <span class="text-yellow-400">"kodepos"</span>: <span class="text-green-500">"43291"</span>,
+        <span class="text-yellow-400">"pasaran"</span>: <span class="text-green-500">"Senin Pon, 20 Oktober 1997"</span>,
+        <span class="text-yellow-400">"usia"</span>: <span class="text-green-500">"27 Tahun 8 Bulan 5 Hari"</span>,
+        <span class="text-yellow-400">"ultah"</span>: <span class="text-green-500">"3 Bulan 27 Hari Lagi"</span>,
+        <span class="text-yellow-400">"zodiak"</span>: <span class="text-green-500">"Libra"</span>
+      }
+    }
+  }
+}
+        </pre>
+      </div>
     </div>
-  </main>
-  <footer class="mt-8 bg-[#2a2a3d] rounded-xl px-6 py-4 max-w-xs w-full flex items-center justify-center space-x-2">
-    <span class="text-[#7a7a8a] text-lg font-normal">Powered by</span>
-    <span class="flex items-center space-x-2 text-white font-bold text-lg">
-      <i class="fas fa-cube"></i>
-      <span>Nebula</span>
-    </span>
-  </footer>
+
+    <button
+      disabled
+      class="w-full mt-6 py-3 rounded-full bg-[#1f2a33] text-[#5a5a5a] font-semibold text-sm cursor-not-allowed flex justify-center items-center space-x-2"
+      type="button"
+    >
+      <svg
+        class="animate-spin h-4 w-4 text-[#5a5a5a]"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          class="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          stroke-width="4"
+        ></circle>
+        <path
+          class="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+        ></path>
+      </svg>
+      <span>MEMPROSES...</span>
+    </button>
+  </div>
 </body>
 </html>
