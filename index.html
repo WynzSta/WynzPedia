@@ -3,149 +3,462 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Viewer</title>
+    <title>Login & Registration</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             height: 100vh;
-            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         .container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            transition: transform 0.5s ease-in-out;
+            position: relative;
+            width: 800px;
+            height: 500px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
         }
         
-        .slide {
-            min-width: 100%;
+        .form-container {
+            position: absolute;
+            top: 0;
             height: 100%;
+            transition: all 0.6s ease-in-out;
+        }
+        
+        .login-container {
+            left: 0;
+            width: 50%;
+            z-index: 2;
+        }
+        
+        .register-container {
+            left: 0;
+            width: 50%;
+            opacity: 0;
+            z-index: 1;
+        }
+        
+        .container.right-panel-active .login-container {
+            transform: translateX(100%);
+        }
+        
+        .container.right-panel-active .register-container {
+            transform: translateX(100%);
+            opacity: 1;
+            z-index: 3;
+        }
+        
+        form {
+            background: #fff;
             display: flex;
             flex-direction: column;
+            padding: 0 50px;
+            height: 100%;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-            box-sizing: border-box;
+            text-align: center;
         }
         
-        #slide1 {
-            background-color: #ffffff;
-        }
-        
-        #slide2 {
-            background-color: #f8f9fa;
-        }
-        
-        .login-form {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+        h1 {
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #333;
         }
         
         input {
+            background: #eee;
+            border: none;
+            padding: 12px 15px;
+            margin: 8px 0;
             width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
+            border-radius: 5px;
         }
         
         button {
-            background-color: #2196F3;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 16px;
-        }
-        
-        button:hover {
-            background-color: #45a049;
-        }
-        
-        .video-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 500 auto;
-        }
-        
-        .video-container iframe {
-            width: 100%;
-            height: 12000px;
-            border-radius: 12000px;
-        }
-        
-        .welcome-message {
-            font-size: 20px;
-            margin-bottom: 20px;
+            border-radius: 20px;
+            border: 1px solid #764ba2;
+            background: #764ba2;
+            color: #fff;
+            font-size: 12px;
             font-weight: bold;
+            padding: 12px 45px;
+            margin-top: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+            cursor: pointer;
+        }
+        
+        button:active {
+            transform: scale(0.95);
+        }
+        
+        button:focus {
+            outline: none;
+        }
+        
+        .ghost {
+            background-color: transparent;
+            border-color: #fff;
+        }
+        
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.6s ease-in-out;
+            z-index: 4;
+        }
+        
+        .container.right-panel-active .overlay-container {
+            transform: translateX(-100%);
+        }
+        
+        .overlay {
+            background: linear-gradient(to right, #667eea, #764ba2);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 0 0;
+            color: #fff;
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+        
+        .container.right-panel-active .overlay {
+            transform: translateX(50%);
+        }
+        
+        .overlay-panel {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 40px;
+            text-align: center;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+        
+        .overlay-left {
+            transform: translateX(-20%);
+        }
+        
+        .container.right-panel-active .overlay-left {
+            transform: translateX(0);
+        }
+        
+        .overlay-right {
+            right: 0;
+            transform: translateX(0);
+        }
+        
+        .container.right-panel-active .overlay-right {
+            transform: translateX(20%);
+        }
+        
+        .social-container {
+            margin: 20px 0;
+        }
+        
+        .social-container a {
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+            height: 40px;
+            width: 40px;
             color: #333;
+            text-decoration: none;
+        }
+        
+        .portfolio-container {
+            display: none;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 15px;
+            overflow-y: auto;
+        }
+        
+        .portfolio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .portfolio-item {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .portfolio-info {
+            padding: 15px;
+        }
+        
+        .portfolio-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .portfolio-category {
+            color: #764ba2;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .logout-btn {
+            background-color: #ff4757;
+            margin-top: 20px;
+        }
+        
+        .error-message {
+            color: #ff4757;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="container" id="container">
-        <div class="slide" id="slide1">
-            <div class="login-form">
-                <h2>Login</h2>
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" placeholder="Enter your username">
+        <div class="form-container login-container">
+            <form id="loginForm">
+                <h1>Login</h1>
+                <div class="social-container"></div>
+                <input type="text" id="loginUsername" placeholder="Username" required />
+                <input type="password" id="loginPassword" placeholder="Password" required />
+                <div class="error-message" id="loginError">Invalid username or password</div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <div class="form-container register-container">
+            <form id="registerForm">
+                <h1>Register</h1>
+                <div class="social-container"></div>
+                <input type="text" id="registerUsername" placeholder="Username" required />
+                <input type="password" id="registerPassword" placeholder="Password" required />
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+                <div class="error-message" id="registerError">Passwords don't match</div>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+        
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="login">Login</button>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter your password">
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="register">Register</button>
                 </div>
-                <button id="loginBtn">Login</button>
             </div>
         </div>
-        <div class="slide" id="slide2">
-            <div class="welcome-message">
-                Welcome, <span id="loggedInUser"></span>!
+    </div>
+    
+    <div class="portfolio-container" id="portfolio">
+        <div class="portfolio-header">
+            <h1 id="welcomeMessage">Welcome to Your Portfolio</h1>
+            <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://placehold.co/600x400" alt="Modern web design dashboard with analytics charts and UI elements" class="portfolio-image">
+                <div class="portfolio-info">
+                    <h3 class="portfolio-title">Web Design</h3>
+                    <p class="portfolio-category">UI/UX</p>
+                    <p>Modern dashboard design with analytics and user interface elements.</p>
+                </div>
             </div>
-            <div class="video-container">
-                <iframe src="https://doxczap.vercel.app/" frameborder="0" allowfullscreen></iframe>
+            
+            <div class="portfolio-item">
+                <img src="https://placehold.co/600x400" alt="Mobile app screens showing social media interface on smartphone" class="portfolio-image">
+                <div class="portfolio-info">
+                    <h3 class="portfolio-title">Mobile App</h3>
+                    <p class="portfolio-category">Development</p>
+                    <p>Social media mobile application with clean interface.</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img src="https://placehold.co/600x400" alt="Brand identity package with logo variations and business cards" class="portfolio-image">
+                <div class="portfolio-info">
+                    <h3 class="portfolio-title">Brand Identity</h3>
+                    <p class="portfolio-category">Graphic Design</p>
+                    <p>Complete branding package for startup company.</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img src="https://placehold.co/600x400" alt="Photography collection showcasing urban architecture in black and white" class="portfolio-image">
+                <div class="portfolio-info">
+                    <h3 class="portfolio-title">Urban Photography</h3>
+                    <p class="portfolio-category">Photography</p>
+                    <p>Black and white urban architecture photography series.</p>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Valid credentials
-        const validCredentials = {
-            username: 'admin',
-            password: '123'
-        };
-
-        document.getElementById('loginBtn').addEventListener('click', function() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const loginBtn = document.getElementById('login');
+        const registerBtn = document.getElementById('register');
+        const container = document.getElementById('container');
+        const portfolioContainer = document.getElementById('portfolio');
+        const welcomeMessage = document.getElementById('welcomeMessage');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const loginError = document.getElementById('loginError');
+        const registerError = document.getElementById('registerError');
+        
+        // Check if user is already logged in
+        if (localStorage.getItem('currentUser')) {
+            showPortfolio();
+        }
+        
+        // Toggle between login and register forms
+        registerBtn.addEventListener('click', () => {
+            container.classList.add('right-panel-active');
+        });
+        
+        loginBtn.addEventListener('click', () => {
+            container.classList.remove('right-panel-active');
+        });
+        
+        // Handle login
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
             
-            // Validate credentials
-            if(username === validCredentials.username && password === validCredentials.password) {
-                document.getElementById('container').style.transform = 'translateX(-100%)';
-                document.getElementById('loggedInUser').textContent = username;
+            const storedUser = localStorage.getItem(username);
+            if (storedUser) {
+                const userData = JSON.parse(storedUser);
+                if (userData.password === password) {
+                    // Successful login
+                    localStorage.setItem('currentUser', username);
+                    showPortfolio();
+                } else {
+                    showError(loginError);
+                }
             } else {
-                alert('Invalid username or password');
+                showError(loginError);
             }
         });
+        
+        // Handle registration
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('registerUsername').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                showError(registerError);
+                return;
+            }
+            
+            // Save user data
+            const userData = {
+                username: username,
+                password: password
+            };
+            
+            localStorage.setItem(username, JSON.stringify(userData));
+            localStorage.setItem('currentUser', username);
+            
+            // Show portfolio
+            showPortfolio();
+            
+            // Reset forms
+            registerForm.reset();
+            container.classList.remove('right-panel-active');
+        });
+        
+        // Handle logout
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('currentUser');
+            hidePortfolio();
+        });
+        
+        function showPortfolio() {
+            container.style.display = 'none';
+            portfolioContainer.style.display = 'block';
+            
+            // Update welcome message
+            const currentUser = localStorage.getItem('currentUser');
+            welcomeMessage.textContent = `Welcome, ${currentUser}!`;
+        }
+        
+        function hidePortfolio() {
+            container.style.display = 'flex';
+            portfolioContainer.style.display = 'none';
+            loginForm.reset();
+        }
+        
+        function showError(errorElement) {
+            errorElement.style.display = 'block';
+            setTimeout(() => {
+                errorElement.style.display = 'none';
+            }, 3000);
+        }
     </script>
 </body>
 </html>
+
