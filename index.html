@@ -3,110 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List Reseller Script ExoSparta</title>
+    <title>Video Viewer</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+        
+        .container {
+            width: 100%;
+            height: 100%;
             display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #c0c0c0;
-            position: relative; /* Tambahkan ini untuk posisi relatif */
-            overflow: hidden; /* Sembunyikan overflow */
+            padding: 20px;
+            box-sizing: border-box;
         }
-
-        .color-line {
-            position: absolute;
-            width: 5px; /* Lebar garis */
-            height: 100%; /* Tinggi penuh */
-            background: linear-gradient(to bottom, red, orange, yellow, green, blue, indigo, violet);
-            animation: move 2s linear infinite; /* Animasi bergerak */
+        
+        #slide1 {
+            background-color: #ffffff;
         }
-
-        .color-line.left {
-            left: 0;
-            animation-delay: 0s; /* Delay untuk sisi kiri */
+        
+        #slide2 {
+            background-color: #f8f9fa;
         }
-
-        .color-line.right {
-            right: 0;
-            animation-delay: 0.5s; /* Delay untuk sisi kanan */
-        }
-
-        .color-line.top {
-            top: 0;
-            width: 100%; /* Lebar penuh untuk sisi atas */
-            height: 5px; /* Tinggi garis */
-            animation-delay: 0.25s; /* Delay untuk sisi atas */
-        }
-
-        .color-line.bottom {
-            bottom: 0;
-            width: 100%; /* Lebar penuh untuk sisi bawah */
-            height: 5px; /* Tinggi garis */
-            animation-delay: 0.75s; /* Delay untuk sisi bawah */
-        }
-
-        @keyframes move {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-100%); /* Gerakan ke atas */
-            }
-        }
-
-        .profile-card {
-            background-color: silver;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        
+        .login-form {
+            background: white;
             padding: 30px;
-            text-align: center;
-            max-width: 350px;
-            width: 100%;
-            z-index: 1; /* Pastikan card di atas warna */
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
         }
         
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid #f0f0f0;
-            margin-bottom: 20px;
+        .form-group {
+            margin-bottom: 15px;
         }
         
-        .profile-name {
-            font-size: 24px;
-            font-weight: bold;
+        label {
+            display: block;
             margin-bottom: 5px;
-            color: #333;
+            font-weight: bold;
         }
         
-        .profile-title {
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #2196F3;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
             font-size: 16px;
-            color: #777;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .video-container {
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .video-container iframe {
+            width: 100%;
+            height: 450px;
+            border-radius: 8px;
+        }
+        
+        .welcome-message {
+            font-size: 20px;
             margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <div class="color-line left"></div> <!-- Garis sisi kiri -->
-    <div class="color-line right"></div> <!-- Garis sisi kanan -->
-    <div class="color-line top"></div> <!-- Garis sisi atas -->
-    <div class="color-line bottom"></div> <!-- Garis sisi bawah -->
-    
-    <div class="profile-card">
-        <img 
-            src="https://l.top4top.io/p_34648m3y71.jpg" 
-            alt="Professional headshot of a smiling business person with neutral background" 
-            class="profile-image"
-            onerror="this.src='https://via.placeholder.com/500';this.alt='Default profile image'">
-        
-        <h1 class="profile-name">Wynz`sX</h1>
-        <p class="profile-title">𝘿𝙚𝙫𝙤𝙡𝙤𝙥𝙚𝙧 𝙎𝙘𝙧𝙞𝙥𝙩 𝙀𝙭𝙤𝙎𝙥𝙖𝙧𝙩𝙖</p>
+    <div class="container" id="container">
+        <div class="slide" id="slide1">
+            <div class="login-form">
+                <h2>Login</h2>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter your username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+                <button id="loginBtn">Login</button>
+            </div>
+        </div>
+        <div class="slide" id="slide2">
+            <div class="welcome-message">
+                Welcome, <span id="loggedInUser"></span>!
+            </div>
+            <div class="video-container">
+                <iframe src="https://videyvidey.short.gy/tY8tmF" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
     </div>
+
+    <script>
+        // Valid credentials
+        const validCredentials = {
+            username: 'admin',
+            password: 'password123'
+        };
+
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Validate credentials
+            if(username === validCredentials.username && password === validCredentials.password) {
+                document.getElementById('container').style.transform = 'translateX(-100%)';
+                document.getElementById('loggedInUser').textContent = username;
+            } else {
+                alert('Invalid username or password');
+            }
+        });
+    </script>
 </body>
 </html>
