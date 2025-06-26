@@ -1,394 +1,216 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Tebak Kata Keren</title>
+    <title>Stell Music - Streaming Musik Berkualitas</title>
     <style>
-        :root {
-            --primary: #4361ee;
-            --secondary: #3f37c9;
-            --accent: #4895ef;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #4cc9f0;
-            --danger: #f72585;
-            --warning: #f8961e;
-        }
-        
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: var(--light);
-            color: var(--dark);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem;
-            background-image: radial-gradient(circle at 10% 20%, rgba(67, 97, 238, 0.1) 0%, rgba(67, 97, 238, 0.05) 90%);
+            background-color: #1a1a2e;
+            color: #ffffff;
         }
         
-        .container {
-            max-width: 800px;
-            width: 100%;
-            background-color: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
+        header {
+            background-color: #16213e;
+            padding: 20px 0;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
-        h1 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
+        .logo {
             font-size: 2.5rem;
-        }
-        
-        .game-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-            background-color: var(--light);
-            padding: 1rem;
-            border-radius: 8px;
-        }
-        
-        .game-info div {
             font-weight: bold;
+            margin-bottom: 10px;
+            color: #e94560;
         }
         
-        .score {
-            color: var(--success);
-        }
-        
-        .level {
-            color: var(--accent);
-        }
-        
-        .word-container {
-            margin: 2rem 0;
-            padding: 2rem;
-            background-color: var(--light);
-            border-radius: 8px;
-            min-height: 120px;
+        nav ul {
             display: flex;
-            align-items: center;
             justify-content: center;
+            list-style: none;
         }
         
-        .word {
-            font-size: 2rem;
-            letter-spacing: 0.5rem;
-            text-transform: uppercase;
-            font-weight: bold;
-            color: var(--secondary);
+        nav ul li {
+            margin: 0 15px;
         }
         
-        .shuffled-word {
-            font-size: 1.5rem;
-            letter-spacing: 0.3rem;
-            color: var(--dark);
-            cursor: pointer;
-            transition: all 0.3s ease;
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
         }
         
-        .shuffled-word:hover {
-            color: var(--primary);
-            transform: scale(1.05);
+        nav ul li a:hover {
+            color: #e94560;
         }
         
-        .input-group {
-            margin: 2rem 0;
+        .hero {
+            height: 500px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c604b8a7-9f70-4330-93ed-919798b7a510.png');
+            background-size: cover;
+            background-position: center;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-        }
-        
-        input {
-            padding: 1rem;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            transition: all 0.3s ease;
+            margin-bottom: 50px;
         }
         
-        input:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.3);
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
         }
         
-        button {
-            padding: 1rem 2rem;
-            background-color: var(--primary);
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            background-color: #e94560;
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 1rem;
+            border-radius: 30px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.3s, background-color 0.3s;
         }
         
-        button:hover {
-            background-color: var(--secondary);
-            transform: translateY(-2px);
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: #d43a54;
         }
         
-        button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-            transform: none;
+        .featured {
+            padding: 50px 10%;
         }
         
-        .feedback {
-            margin: 1rem 0;
-            padding: 1rem;
-            border-radius: 8px;
-            font-weight: bold;
-            display: none;
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
         }
         
-        .success {
-            background-color: rgba(76, 201, 240, 0.2);
-            color: var(--success);
-            display: block;
+        .albums {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
         }
         
-        .error {
-            background-color: rgba(247, 37, 133, 0.2);
-            color: var(--danger);
-            display: block;
+        .album-card {
+            background-color: #16213e;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
         }
         
-        .hint-btn {
-            background-color: transparent;
-            color: var(--accent);
-            border: 1px solid var(--accent);
-            padding: 0.5rem 1rem;
-            margin-top: 1rem;
+        .album-card:hover {
+            transform: translateY(-10px);
         }
         
-        .hint-text {
-            margin-top: 1rem;
-            font-style: italic;
-            color: var(--accent);
-            display: none;
+        .album-cover {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
         }
         
-        @media (max-width: 600px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .word {
-                font-size: 1.5rem;
-            }
+        .album-info {
+            padding: 20px;
+        }
+        
+        .album-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .album-artist {
+            color: #a7a7a7;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            background-color: #0f3460;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Game Tebak Kata</h1>
-        
-        <div class="game-info">
-            <div>Skor: <span class="score">0</span></div>
-            <div>Level: <span class="level">1</span></div>
+    <header>
+        <div class="logo">STELL MUSIC</div>
+        <nav>
+            <ul>
+                <li><a href="#">Beranda</a></li>
+                <li><a href="#">Album</a></li>
+                <li><a href="#">Artis</a></li>
+                <li><a href="#">Genre</a></li>
+                <li><a href="#">Tentang</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <h1>Dengarkan Musik Terbaik</h1>
+        <p>Jutaan lagu dari berbagai genre tersedia hanya di Stell Music. Streaming tanpa iklan dan dengan kualitas tinggi.</p>
+        <button class="btn">Daftar Sekarang</button>
+    </section>
+    
+    <section class="featured">
+        <h2 class="section-title">Album Terpopuler</h2>
+        <div class="albums">
+            <div class="album-card">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d18ca6f5-0fa6-4357-b762-ef9454ab2e2c.png" alt="Album cover dengan tema futuristik neon dengan warna pink dan cyan" class="album-cover">
+                <div class="album-info">
+                    <h3 class="album-title">Cosmic Journey</h3>
+                    <p class="album-artist">Stella Nova</p>
+                    <button class="btn">Putar</button>
+                </div>
+            </div>
+            
+            <div class="album-card">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f216013c-aab7-42ba-abfc-649ec2b4dd27.png" alt="Album cover dengan ilustrasi pensil sketsa wajah artis" class="album-cover">
+                <div class="album-info">
+                    <h3 class="album-title">Sketches</h3>
+                    <p class="album-artist">The Loners</p>
+                    <button class="btn">Putar</button>
+                </div>
+            </div>
+            
+            <div class="album-card">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8b9c9561-aebe-44cc-a624-a715accad818.png" alt="Album cover dengan foto studio hitam putih artis memainkan gitar" class="album-cover">
+                <div class="album-info">
+                    <h3 class="album-title">Midnight Strings</h3>
+                    <p class="album-artist">Edric Hale</p>
+                    <button class="btn">Putar</button>
+                </div>
+            </div>
+            
+            <div class="album-card">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a394dcea-aa4d-45f9-974e-314ccca29e8f.png" alt="Album cover dengan desain abstrak geometris warna-warni" class="album-cover">
+                <div class="album-info">
+                    <h3 class="album-title">Electric Dreams</h3>
+                    <p class="album-artist">Violet Pulse</p>
+                    <button class="btn">Putar</button>
+                </div>
+            </div>
         </div>
-        
-        <div class="word-container">
-            <div class="word">?</div>
-        </div>
-        
-        <div class="input-group">
-            <input type="text" id="answer-input" placeholder="Ketik jawabanmu di sini..." autocomplete="off">
-            <button id="submit-btn">Submit</button>
-            <button id="hint-btn" class="hint-btn">Minta Petunjuk</button>
-            <div id="hint-text" class="hint-text"></div>
-        </div>
-        
-        <div id="feedback" class="feedback"></div>
-    </div>
-
-    <script>
-        // Database kata-kata keren dengan kategori berbeda
-        const wordsDatabase = [
-            // Teknologi
-            { word: "ALGORITMA", hint: "Langkah-langkah logis untuk menyelesaikan masalah" },
-            { word: "BIGDATA", hint: "Kumpulan data yang sangat besar dan kompleks" },
-            { word: "CLOUD", hint: "Komputasi berbasis internet" },
-            { word: "DEVELOPER", hint: "Orang yang membuat perangkat lunak" },
-            
-            // Sains
-            { word: "KUANTUM", hint: "Cabang fisika tentang partikel subatom" },
-            { word: "NEURON", hint: "Sel saraf dalam otak" },
-            { word: "GENOM", hint: "Seluruh informasi genetik suatu organisme" },
-            
-            // Hiburan
-            { word: "BLOCKBUSTER", hint: "Film yang sangat sukses" },
-            { word: "STREAMING", hint: "Menonton atau mendengar konten secara online" },
-            { word: "PODCAST", hint: "Acara audio digital yang bisa diunduh" },
-            
-            // Makanan
-            { word: "AVOCADO", hint: "Buah berwarna hijau dengan tekstur lembut" },
-            { word: "SUSHI", hint: "Makanan Jepang dari nasi dan ikan mentah" },
-            { word: "CAPPUCCINO", hint: "Minuman kopi dengan busa susu" },
-            
-            // Travel
-            { word: "BACKPACKER", hint: "Pelancong dengan budget terbatas" },
-            { word: "VISA", hint: "Izin masuk ke suatu negara" },
-            { word: "RESORT", hint: "Tempat liburan mewah" }
-        ];
-
-        // Variabel game state
-        let currentWord = "";
-        let shuffledWord = "";
-        let score = 0;
-        let level = 1;
-        let usedWords = [];
-        let hintUsed = false;
-
-        // Elemen DOM
-        const wordElement = document.querySelector('.word');
-        const scoreElement = document.querySelector('.score');
-        const levelElement = document.querySelector('.level');
-        const answerInput = document.getElementById('answer-input');
-        const submitBtn = document.getElementById('submit-btn');
-        const hintBtn = document.getElementById('hint-btn');
-        const hintText = document.getElementById('hint-text');
-        const feedbackElement = document.getElementById('feedback');
-
-        // Fungsi untuk memilih kata acak yang belum digunakan
-        function getRandomWord() {
-            // Jika semua kata sudah digunakan, reset usedWords
-            if (usedWords.length === wordsDatabase.length) {
-                usedWords = [];
-            }
-
-            let availableWords = wordsDatabase.filter(wordObj => !usedWords.includes(wordObj.word));
-            const randomIndex = Math.floor(Math.random() * availableWords.length);
-            const selectedWord = availableWords[randomIndex];
-            
-            usedWords.push(selectedWord.word);
-            return selectedWord;
-        }
-
-        // Fungsi untuk mengacak huruf dalam kata
-        function shuffleWord(word) {
-            const letters = word.split('');
-            for (let i = letters.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [letters[i], letters[j]] = [letters[j], letters[i]];
-            }
-            return letters.join('');
-        }
-
-        // Fungsi untuk memulai level baru
-        function startNewLevel() {
-            // Reset hint status
-            hintUsed = false;
-            hintText.style.display = 'none';
-            
-            // Dapatkan kata baru
-            const wordObj = getRandomWord();
-            currentWord = wordObj.word;
-            shuffledWord = shuffleWord(currentWord);
-            
-            // Update tampilan
-            wordElement.textContent = shuffledWord;
-            answerInput.value = '';
-            feedbackElement.className = 'feedback';
-            feedbackElement.style.display = 'none';
-            
-            // Set hint text
-            hintText.textContent = `Petunjuk: ${wordObj.hint}`;
-            
-            // Fokus ke input
-            answerInput.focus();
-        }
-
-        // Fungsi untuk mengecek jawaban
-        function checkAnswer() {
-            const userAnswer = answerInput.value.trim().toUpperCase();
-            
-            // Validasi input
-            if (!userAnswer) {
-                showFeedback('Silakan masukkan jawaban!', 'error');
-                return;
-            }
-            
-            if (userAnswer === currentWord) {
-                // Jawaban benar
-                score += level * 10;
-                if (!hintUsed) score += 5; // Bonus jika tidak pakai hint
-                showFeedback(`Benar! +${level * 10} poin${!hintUsed ? ' (+5 bonus)' : ''}`, 'success');
-                
-                // Update skor
-                scoreElement.textContent = score;
-                
-                // Level up setiap 3 kata benar
-                if (usedWords.length % 3 === 0) {
-                    level++;
-                    levelElement.textContent = level;
-                }
-                
-                // Lanjut ke kata berikutnya setelah 1.5 detik
-                setTimeout(startNewLevel, 1500);
-            } else {
-                // Jawaban salah
-                showFeedback('Salah! Coba lagi.', 'error');
-                answerInput.value = '';
-                answerInput.focus();
-            }
-        }
-
-        // Fungsi untuk menampilkan feedback
-        function showFeedback(message, type) {
-            feedbackElement.textContent = message;
-            feedbackElement.className = `feedback ${type}`;
-            feedbackElement.style.display = 'block';
-        }
-
-        // Fungsi untuk menampilkan petunjuk
-        function showHint() {
-            if (hintUsed) return;
-            
-            hintUsed = true;
-            hintText.style.display = 'block';
-            score = Math.max(0, score - 5); // Kurangi 5 poin untuk hint
-            scoreElement.textContent = score;
-        }
-
-        // Event listeners
-        submitBtn.addEventListener('click', checkAnswer);
-        
-        answerInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                checkAnswer();
-            }
-        });
-        
-        hintBtn.addEventListener('click', showHint);
-
-        // Inisialisasi game
-        startNewLevel();
-
-        // Anti-bug: Validasi input untuk mencegah karakter aneh
-        answerInput.addEventListener('input', function() {
-            this.value = this.value.replace(/[^a-zA-Z]/g, '');
-        });
-    </script>
+    </section>
+    
+    <footer>
+        <p>© 2023 Stell Music. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>
 
