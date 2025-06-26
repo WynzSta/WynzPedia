@@ -3,214 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stell Music - Streaming Musik Berkualitas</title>
+    <title>List Reseller Script ExoSparta</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
         body {
-            background-color: #1a1a2e;
-            color: #ffffff;
-        }
-        
-        header {
-            background-color: #16213e;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #e94560;
-        }
-        
-        nav ul {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
-            justify-content: center;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin: 0 15px;
-        }
-        
-        nav ul li a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: #e94560;
-        }
-        
-        .hero {
-            height: 500px;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c604b8a7-9f70-4330-93ed-919798b7a510.png');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            margin-bottom: 50px;
+            height: 100vh;
+            margin: 0;
+            background-color: #c0c0c0;
         }
         
-        .hero h1 {
-            font-size: 3.5rem;
+        .profile-card {
+            background-color: red;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+            text-align: center;
+            max-width: 350px;
+            width: 100%;
+        }
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #f0f0f0;
             margin-bottom: 20px;
         }
         
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin-bottom: 30px;
-        }
-        
-        .btn {
-            padding: 12px 30px;
-            background-color: #e94560;
-            color: white;
-            border: none;
-            border-radius: 30px;
+        .profile-name {
+            font-size: 24px;
             font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s, background-color 0.3s;
+            margin-bottom: 5px;
+            color: #333;
         }
         
-        .btn:hover {
-            transform: scale(1.05);
-            background-color: #d43a54;
-        }
-        
-        .featured {
-            padding: 50px 10%;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.2rem;
-        }
-        
-        .albums {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .album-card {
-            background-color: #16213e;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
-        
-        .album-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .album-cover {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-        
-        .album-info {
-            padding: 20px;
-        }
-        
-        .album-title {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-        
-        .album-artist {
-            color: #a7a7a7;
-            margin-bottom: 15px;
-        }
-        
-        footer {
-            background-color: #0f3460;
-            text-align: center;
-            padding: 30px 0;
-            margin-top: 50px;
+        .profile-title {
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">STELL MUSIC</div>
-        <nav>
-            <ul>
-                <li><a href="#">Beranda</a></li>
-                <li><a href="#">Album</a></li>
-                <li><a href="#">Artis</a></li>
-                <li><a href="#">Genre</a></li>
-                <li><a href="#">Tentang</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <section class="hero">
-        <h1>Dengarkan Musik Terbaik</h1>
-        <p>Jutaan lagu dari berbagai genre tersedia hanya di Stell Music. Streaming tanpa iklan dan dengan kualitas tinggi.</p>
-        <button class="btn">Daftar Sekarang</button>
-    </section>
-    
-    <section class="featured">
-        <h2 class="section-title">Album Terpopuler</h2>
-        <div class="albums">
-            <div class="album-card">
-                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d18ca6f5-0fa6-4357-b762-ef9454ab2e2c.png" alt="Album cover dengan tema futuristik neon dengan warna pink dan cyan" class="album-cover">
-                <div class="album-info">
-                    <h3 class="album-title">Cosmic Journey</h3>
-                    <p class="album-artist">Stella Nova</p>
-                    <button class="btn">Putar</button>
-                </div>
-            </div>
-            
-            <div class="album-card">
-                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f216013c-aab7-42ba-abfc-649ec2b4dd27.png" alt="Album cover dengan ilustrasi pensil sketsa wajah artis" class="album-cover">
-                <div class="album-info">
-                    <h3 class="album-title">Sketches</h3>
-                    <p class="album-artist">The Loners</p>
-                    <button class="btn">Putar</button>
-                </div>
-            </div>
-            
-            <div class="album-card">
-                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8b9c9561-aebe-44cc-a624-a715accad818.png" alt="Album cover dengan foto studio hitam putih artis memainkan gitar" class="album-cover">
-                <div class="album-info">
-                    <h3 class="album-title">Midnight Strings</h3>
-                    <p class="album-artist">Edric Hale</p>
-                    <button class="btn">Putar</button>
-                </div>
-            </div>
-            
-            <div class="album-card">
-                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a394dcea-aa4d-45f9-974e-314ccca29e8f.png" alt="Album cover dengan desain abstrak geometris warna-warni" class="album-cover">
-                <div class="album-info">
-                    <h3 class="album-title">Electric Dreams</h3>
-                    <p class="album-artist">Violet Pulse</p>
-                    <button class="btn">Putar</button>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <footer>
-        <p>© 2023 Stell Music. All Rights Reserved.</p>
-    </footer>
+    <div class="profile-card">
+        <img 
+            src="https://l.top4top.io/p_34648m3y71.jpg" 
+            alt="Professional headshot of a smiling business person with neutral background" 
+            class="profile-image"
+            onerror="this.src='https://via.placeholder.com/500';this.alt='Default profile image'">
+        
+        <h1 class="profile-name">Wynz`sX</h1>
+        <p class="profile-title">Devoloper Script ExoSparta</p>
+    </div>
 </body>
 </html>
 
