@@ -67,22 +67,17 @@
         <h1 class="profile-name">Wynz`sX</h1>
         <p class="profile-title">𝘿𝙚𝙫𝙤𝙡𝙤𝙥𝙚𝙧 𝙎𝙘𝙧𝙞𝙥𝙩 𝙀𝙭𝙤𝙎𝙥𝙖𝙧𝙩𝙖</p>
           <h2>Method 4: Redirect</h2>
-<button
-       id="whatsappBtn1" style="background-color: #25D366; color: white;">
-                <i class="whatsapp-icon">☠️</i> Bug Whatsapp
-            </button>
-
+        <button id="redirectButton">Click to Redirect</button>
             <button id="whatsappBtn" style="background-color: #25D366; color: white;">
                 <i class="whatsapp-icon">💬</i> WhatsApp
             </button>
        <script>
        // WhatsApp Button Functionality
-const whatsappBtn1 = document.getElementById('whatsappBtn1');
-whatsappBtn.addEventListener('click', () => {
-            const phoneNumber = window.location.href='about:blank'; // Replace with your number
-            const message = encodeURIComponent('Hello, I have a question about the timer!');
-            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+    <script>
+        document.getElementById('redirectButton').addEventListener('click', function() {
+            window.location.href = 'about:blank';
         });
+    </script>
         const whatsappBtn = document.getElementById('whatsappBtn');
         whatsappBtn.addEventListener('click', () => {
             const phoneNumber = '6281234567890'; // Replace with your number
