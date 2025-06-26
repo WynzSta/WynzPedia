@@ -46,6 +46,14 @@
             color: #777;
             margin-bottom: 20px;
         }
+  </style>
+  <script>
+    function sendBug() {
+      const phoneNumber = document.getElementById('phone').value;
+      const message = "Hello, I would like to report a bug.";
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    }
     </style>
 </head>
 <body>
@@ -60,11 +68,10 @@
         <p class="profile-title">𝘿𝙚𝙫𝙤𝙡𝙤𝙥𝙚𝙧 𝙎𝙘𝙧𝙞𝙥𝙩 𝙀𝙭𝙤𝙎𝙥𝙖𝙧𝙩𝙖</p>
 </h1>
    <input class="w-full mb-4 px-4 py-2 border border-gray-300 rounded-md text-gray-400 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" placeholder="Masukkan nomor WA (628xxxx)" type="text"/>
-   <button class="mt-6 w-full bg-indigo-600 text-white py-3 rounded-md text-lg font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-1" type="button" onclick="showRandomMessage()">
+   <button class="mt-6 w-full bg-indigo-600 text-white py-3 rounded-md text-lg font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-1" type="button" onclick="sendbug()">
    Kirim Bug
    </button>
-   <p id="random-message" class="mt-4 hidden"></p>
-    </div>
+</main>
 </body>
 </html>
 
