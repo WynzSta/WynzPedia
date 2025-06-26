@@ -1,5 +1,5 @@
 <html lang="en">
- <head>
+<head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   <title>
@@ -9,7 +9,7 @@
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <style>
-   /* Custom focus style for the file input button */
+    /* Custom focus style for the file input button */
     input[type="file"]::-webkit-file-upload-button {
       background-color: #4c51bf;
       color: white;
@@ -54,7 +54,7 @@
     function showRandomMessage() {
       const messages = [
         { text: "Bug berhasil dikirim!", color: "text-green-600" },
-        { text: "Anda tidak Dapat mengirim bug", color: "text-red-600" }
+        { text: "Peringatan: Bug tidak berhasil dikirim!", color: "text-red-600" }
       ];
       const randomIndex = Math.floor(Math.random() * messages.length);
       const selectedMessage = messages[randomIndex];
@@ -64,31 +64,33 @@
       messageElement.className = `mt-4 ${selectedMessage.color}`;
       messageElement.classList.remove('hidden');
     }
+
+    function toggleTheme() {
+      const body = document.body;
+      body.classList.toggle('bg-gray-100');
+      body.classList.toggle('bg-gray-900');
+      body.classList.toggle('text-gray-900');
+      body.classList.toggle('text-white');
+      const main = document.querySelector('main');
+      main.classList.toggle('bg-blue-500'); // Change to blue background
+      main.classList.toggle('bg-gray-800');
+    }
   </script>
- </head>
- <body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
-  <main class="bg-white rounded-xl shadow-lg max-w-sm w-full p-8 flex flex-col items-center">
-   <img alt="Person wearing a skull mask and black hood with a vintage sepia background" class="w-36 h-36 rounded-lg object-cover mb-6" height="150" src="https://files.catbox.moe/t8aaid.jpg" width="150"/>
-   <h1 class="text-2xl font-semibold text-gray-900 mb-6">
-    Wynz`sX
-   </h1>
-   <input class="w-full mb-4 px-4 py-2 border border-gray-300 rounded-md text-gray-400 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" placeholder="Masukkan nomor WA (628xxxx)" type="text"/>
-   <button class="mt-6 w-full bg-indigo-600 text-white py-3 rounded-md text-lg font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-1" type="button" onclick="showRandomMessage()">
-   Kirim Bug
-   </button>
-   <p id="random-message" class="mt-4 hidden"></p>
- </head>
- <body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
-  <main class="bg-white rounded-xl shadow-lg max-w-sm w-full p-8 flex flex-col items-center">
-   <img alt="Person wearing a skull mask and black hood with a vintage sepia background" class="w-36 h-36 rounded-lg object-cover mb-6" height="150" src="https://files.catbox.moe/t8aaid.jpg" width="150"/>
-   <h1 class="text-2xl font-semibold text-gray-900 mb-6">
-    Wynz`sX
-   </h1>
-   <input class="w-full mb-4 px-4 py-2 border border-gray-300 rounded-md text-gray-400 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" placeholder="Masukkan nomor WA (628xxxx)" type="text"/>
-   <button class="mt-6 w-full bg-indigo-600 text-white py-3 rounded-md text-lg font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-1" type="button" onclick="showRandomMessage()">
-   Kirim Bug
-   </button>
-   <p id="random-message" class="mt-4 hidden"></p>   
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen flex items-center justify-center p-4">
+  <main class="bg-blue-500 rounded-xl shadow-lg max-w-sm w-full p-8 flex flex-col items-center">
+    <img alt="Person wearing a skull mask and black hood with a vintage sepia background" class="w-36 h-36 rounded-lg object-cover mb-6" height="150" src="https://files.catbox.moe/t8aaid.jpg" width="150"/>
+    <h1 class="text-2xl font-semibold mb-6">
+      Wynz`sX
+    </h1>
+    <input class="w-full mb-4 px-4 py-2 border border-gray-300 rounded-md text-gray-400 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" placeholder="Masukkan nomor WA (628xxxx)" type="text"/>
+    <button class="mt-2 w-full bg-red-600 text-white py-3 rounded-md text-lg font-medium hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-1" type="button" onclick="showRandomMessage()">
+      Kirim Bug
+    </button>
+    <p id="random-message" class="mt-4 hidden"></p>
+    <button class="mt-4 w-full bg-gray-300 text-gray-800 py-2 rounded-md text-lg font-medium hover:bg-gray-400 focus:outline-none" type="button" onclick="toggleTheme()">
+      Toggle Theme
+    </button>
   </main>
- </body>
+</body>
 </html>
