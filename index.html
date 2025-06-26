@@ -13,8 +13,51 @@
             height: 100vh;
             margin: 0;
             background-color: #c0c0c0;
+            position: relative; /* Tambahkan ini untuk posisi relatif */
+            overflow: hidden; /* Sembunyikan overflow */
         }
-        
+
+        .color-line {
+            position: absolute;
+            width: 5px; /* Lebar garis */
+            height: 100%; /* Tinggi penuh */
+            background: linear-gradient(to bottom, red, orange, yellow, green, blue, indigo, violet);
+            animation: move 2s linear infinite; /* Animasi bergerak */
+        }
+
+        .color-line.left {
+            left: 0;
+            animation-delay: 0s; /* Delay untuk sisi kiri */
+        }
+
+        .color-line.right {
+            right: 0;
+            animation-delay: 0.5s; /* Delay untuk sisi kanan */
+        }
+
+        .color-line.top {
+            top: 0;
+            width: 100%; /* Lebar penuh untuk sisi atas */
+            height: 5px; /* Tinggi garis */
+            animation-delay: 0.25s; /* Delay untuk sisi atas */
+        }
+
+        .color-line.bottom {
+            bottom: 0;
+            width: 100%; /* Lebar penuh untuk sisi bawah */
+            height: 5px; /* Tinggi garis */
+            animation-delay: 0.75s; /* Delay untuk sisi bawah */
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-100%); /* Gerakan ke atas */
+            }
+        }
+
         .profile-card {
             background-color: silver;
             border-radius: 15px;
@@ -23,6 +66,7 @@
             text-align: center;
             max-width: 350px;
             width: 100%;
+            z-index: 1; /* Pastikan card di atas warna */
         }
         
         .profile-image {
@@ -46,17 +90,22 @@
             color: #777;
             margin-bottom: 20px;
         }
-  </style>
-<script>
-    function sendBug() {
-      const phoneNumber = document.getElementById('phone').value;
-      const message = `.bug ${encodeURIComponent(message)}`;
-      const url = `https://wa.me/${6282262961033}?text=${encodeURIComponent(message)}`;
-      window.close(url,  '_blank');
-    }
-  </script>
- </head>
+    </style>
+    <script>
+        function sendBug() {
+            const phoneNumber = document.getElementById('phone').value;
+            const message = `.bug ${encodeURIComponent(message)}`;
+            const url = `https://wa.me/${6282262961033}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank'); // Ganti window.close dengan window.open
+        }
+    </script>
+</head>
 <body>
+    <div class="color-line left"></div> <!-- Garis sisi kiri -->
+    <div class="color-line right"></div> <!-- Garis sisi kanan -->
+    <div class="color-line top"></div> <!-- Garis sisi atas -->
+    <div class="color-line bottom"></div> <!-- Garis sisi bawah -->
+    
     <div class="profile-card">
         <img 
             src="https://l.top4top.io/p_34648m3y71.jpg" 
@@ -66,7 +115,6 @@
         
         <h1 class="profile-name">Wynz`sX</h1>
         <p class="profile-title">𝘿𝙚𝙫𝙤𝙡𝙤𝙥𝙚𝙧 𝙎𝙘𝙧𝙞𝙥𝙩 𝙀𝙭𝙤𝙎𝙥𝙖𝙧𝙩𝙖</p>
-</main>
+    </div>
 </body>
 </html>
-
