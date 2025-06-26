@@ -3,105 +3,64 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   <title>
-  Pembayaran 
+   Wynz Bug Apps
   </title>
   <script src="https://cdn.tailwindcss.com">
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <style>
-   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-    body {
-      font-family: 'Inter', sans-serif;
+   /* Custom focus style for the file input button */
+    input[type="file"]::-webkit-file-upload-button {
+      background-color: #4c51bf;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      border: none;
+      font-size: 1rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: box-shadow 0.2s ease;
+      box-shadow: 0 0 0 2px #2c2f8a;
+    }
+    input[type="file"]::-webkit-file-upload-button:hover {
+      box-shadow: 0 0 0 3px #1a1c5a;
+    }
+    input[type="file"]::-webkit-file-upload-button:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px #1a1c5a;
+    }
+    /* Firefox */
+    input[type="file"]::file-selector-button {
+      background-color: #4c51bf;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      border: none;
+      font-size: 1rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: box-shadow 0.2s ease;
+      box-shadow: 0 0 0 2px #2c2f8a;
+    }
+    input[type="file"]::file-selector-button:hover {
+      box-shadow: 0 0 0 3px #1a1c5a;
+    }
+    input[type="file"]::file-selector-button:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px #1a1c5a;
     }
   </style>
  </head>
- <body class="bg-gradient-to-b from-[#0a1229] to-[#0f183a] min-h-screen flex justify-center p-4">
-  <main class="max-w-md w-full bg-[#15203a] rounded-xl p-6 space-y-6">
-   <header class="text-center">
-    <h1 class="text-[#4db8ff] text-3xl font-extrabold">
-     Metode Pembayaran
-    </h1>
-    <p class="text-gray-400 mt-2">
-     Silakan pilih salah satu metode pembayaran di bawah ini.
-    </p>
-   </header>
-   <section class="space-y-6">
-    <!-- Dana -->
-    <article class="bg-[#1f2a47] rounded-lg p-4 space-y-2">
-     <div class="flex items-center space-x-2">
-      <h2 class="text-[#4db8ff] font-semibold text-lg">
-       DANA DIGITAL
-      </h2>
-      <span class="bg-[#1f6f4f] text-green-400 text-xs font-semibold rounded-md px-2 py-0.5">
-       ONLINE
-      </span>
-     </div>
-     <p class="text-white text-sm select-text">
-      082146399915
-     </p>
-     <button class="mt-2 inline-flex items-center space-x-2 bg-[#4db8ff] text-white text-sm font-semibold rounded-md px-3 py-1.5 hover:bg-[#3a9de0] transition" type="button">
-      <i class="far fa-clipboard">
-      </i>
-      <span>
-       COPY
-      </span>
-     </button>
-    </article>
-    <!-- Gopay -->
-    <article class="bg-[#1f2a47] rounded-lg p-4 space-y-2">
-     <div class="flex items-center space-x-2">
-      <h2 class="text-[#2ecc71] font-semibold text-lg">
-       GOPAY 
-      </h2>
-      <span class="bg-[#1f6f4f] text-green-400 text-xs font-semibold rounded-md px-2 py-0.5">
-       ONLINE
-      </span>
-     </div>
-     <p class="text-white text-sm select-text">
-      082262961033
-     </p>
-     <button class="mt-2 inline-flex items-center space-x-2 bg-[#2ecc71] text-white text-sm font-semibold rounded-md px-3 py-1.5 hover:bg-[#27ae60] transition" type="button">
-      <i class="far fa-clipboard">
-      </i>
-      <span>
-       COPY
-      </span>
-     </button>
-    </article>
-    <!-- OVO -->
-    <article class="bg-[#1f2a47] rounded-lg p-4 space-y-2">
-     <div class="flex items-center space-x-2">
-      <h2 class="text-[#b57aff] font-semibold text-lg">
-       OVO
-      </h2>
-      <span class="bg-[#1f6f4f] text-green-400 text-xs font-semibold rounded-md px-2 py-0.5">
-      ONLINE
-      </span>
-     </div>
-     <p class="text-white text-sm uppercase select-text">
-     082146399915
-     </p>
-     <button class="mt-2 inline-flex items-center space-x-2 bg-[#b57aff] text-white text-sm font-semibold rounded-md px-3 py-1.5 hover:bg-[#9a5fff] transition" type="button">
-      <i class="far fa-clipboard">
-      </i>
-      <span>
-       COPY
-      </span>
-     </button>
-    </article>
-    <!-- QRIS -->
-    <article class="bg-[#1f2a47] rounded-lg p-4 space-y-4">
-     <div class="flex items-center space-x-2">
-      <h2 class="text-[#b7e22f] font-semibold text-lg">
-       QRIS PAYMENT
-      </h2>
-      <span class="bg-[#1f6f4f] text-green-400 text-xs font-semibold rounded-md px-2 py-0.5">
-       ONLINE
-      </span>
-     </div>
-     <img alt="QRIS payment method illustration with a character with purple hair and a purple flower hairpin" class="mx-auto rounded-md" height="150" src="https://files.catbox.moe/t8aaid.jpg" width="150"/>
-    </article>
-   </section>
+ <body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+  <main class="bg-white rounded-xl shadow-lg max-w-sm w-full p-8 flex flex-col items-center">
+   <img alt="Person wearing a skull mask and black hood with a vintage sepia background" class="w-36 h-36 rounded-lg object-cover mb-6" height="150" src="https://files.catbox.moe/t8aaid.jpg" width="150"/>
+   <h1 class="text-2xl font-semibold text-gray-900 mb-6">
+    Wynz`sX
+   </h1>
+   <input class="w-full mb-4 px-4 py-2 border border-gray-300 rounded-md text-gray-400 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" placeholder="Masukkan nomor WA (628xxxx)" type="text"/>
+   <button class="mt-6 w-full bg-indigo-600 text-white py-3 rounded-md text-lg font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-1" type="submit">
+   Kirim Bug
+   </button>
   </main>
  </body>
 </html>
