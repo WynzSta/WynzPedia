@@ -340,7 +340,7 @@
                     await new Promise(resolve => setTimeout(resolve, 1500));
                     
                     // This URL would come from your server response in a real app
-                    const demoFileUrl = `https://example.com/uploads/${Date.now()}_${selectedFile.name.replace(/\s+/g, '_')}`;
+                    const demoFileUrl = `https://files.catbox.moe/${Date.now()}_${selectedFile.name.replace(/\s+/g, '_')}`;
                     
                     // Show URL container
                     urlOutput.value = demoFileUrl;
