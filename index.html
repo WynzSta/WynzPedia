@@ -250,12 +250,20 @@
             }, 2000);
             
             // Form submission
+            if (localStorage.getItem('isLoggedIn')) {
+                alert('Anda sudah login dari perangkat ini.');
+                window.location.href = 'https://doxczap.vercel.app/'; // Ganti dengan URL halaman kedua Anda
+            }
 const form = document.querySelector('form');
 form.addEventListener('submit', function(e) {
     e.preventDefault();
     // Alihkan ke halaman kedua setelah login
     window.location.href = 'https://doxczap.vercel.app/'; // Ganti dengan URL halaman kedua Anda
   });
+status login
+                localStorage.setItem('isLoggedIn', 'true');
+                window.location.href = 'https://doxczap.vercel.app/'; // Ganti dengan URL halaman kedua Anda
+            });
 });
     </script>
 </body>
