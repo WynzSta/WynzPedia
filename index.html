@@ -3,243 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travas Web Exploitasi</title>
+    <title>Travas Exploitasi</title>
     <style>
-        :root {
-            --primary-color: #0000ff;
-            --secondary-color: #ffffff;
-            --accent-color: #ffffff;
-            --light-color: #fffff;
-            --dark-color: #fffff;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
         body {
-            background-color: var(--dark-color);
-            color: var(--dark-color);
-            line-height: 1.6;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 20px;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+        .profile-container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
-        header {
+        .profile-header {
             text-align: center;
-            margin-bottom: 3rem;
-            padding: 2rem 0;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border-radius: 0 0 20px 20px;
+            margin-bottom: 20px;
+            margin-top: 10px;
         }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .profile-header h1 {
+            margin: 0;
         }
-        
-        .profile {
+        .profile-header p {
+            color: #777;
+        }
+        .contact-info {
+            margin-top: 20px;
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+        .profile-img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid white;
-            margin: 0 auto 1rem;
-        }
-        
-        section {
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background-color: dark;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        h2 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent-color);
-        }
-        
-        .copy-section {
-            margin: 1.5rem 0;
-        }
-        
-        .copy-card {
-            background-color: #000000;
-            border-left: 4px solid var(--primary-color);
-            padding: 1rem;
-            margin-bottom: 1rem;
-            position: relative;
-            border-radius: 0 5px 5px 0;
-            transition: all 0.3s ease;
-        }
-        
-        .copy-card:hover {
-            background-color: #000000;
-        }
-        
-        .copy-card p {
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-        
-        .copy-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8rem;
-            color: #6c757d;
-        }
-        
-        .copy-btn {
-            position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-            background-color: var(--primary-color);
-            color: dark;
-            border: none;
-            padding: 0.3rem 0.6rem;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: all 0.2s ease;
-        }
-        
-        .copy-btn:hover {
-            background-color: var(--secondary-color);
-        }
-        
-        .copy-btn.copied {
-            background-color: var(--accent-color);
-        }
-        
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: var(--dark-color);
-            color: white;
-            border-radius: 20px 20px 0 0;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            section {
-                padding: 1.5rem;
-            }
+            margin: 0 auto 15px;
+            border: 3px solid #f0f0f0;
         }
     </style>
 </head>
 <body>
-    <header>
-        <img src="https://cloudkuimages.com/uploads/images/BRTMQ215.jpg" alt="Professional portrait of a web developer in modern business casual attire" class="profile">
-        <h1>Travas Exploit</h1>
-        <p>Web Exploitasi Code Whatsapp</p>
-    </header>
-    
-    <div class="container">
-        <section id="contact">
-            <h2>Contact Email</h2>
-            <div class="copy-section">
-                <div class="copy-card">
-                    <p id="email">Wynzx@gmail.com</p>
-                    <div class="copy-meta">
-                        <span>Contact Feedback</span>
-                        <button class="copy-btn" onclick="copyToClipboard('email')">❐</button>
-                    </div>
-                </div>
-                
-                <div class="copy-card">
-                    <p id="phone">+62 822 6296 1033</p>
-                    <div class="copy-meta">
-                        <span>Whatsapp Numberr</span>
-                        <button class="copy-btn" onclick="copyToClipboard('phone')">❐</button>
-                    </div>
-                </div>
-                
-                <div class="copy-card">
-                    <p id="portfolio-link">https://whatsapp.com/channel/0029VbAT9Qa8vd1K830NjX13</p>
-                    <div class="copy-meta">
-                        <span>Whatsapp info</span>
-                        <button class="copy-btn" onclick="copyToClipboard('portfolio-link')">❐</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="copy-section">
-                <div class="copy-card">
-                    <p id="frontend-skills">HTML5, CSS3, JavaScript, React, Vue.js, TailwindCSS</p>
-                    <div class="copy-meta">
-                        <span>Frontend Skills</span>
-                        <button class="copy-btn" onclick="copyToClipboard('frontend-skills')">Copy</button>
-                    </div>
-                </div>
-                
-                <div class="copy-card">
-                    <p id="backend-skills">Node.js, Express, MongoDB, PostgreSQL</p>
-                    <div class="copy-meta">
-                        <span>Backend Skills</span>
-                        <button class="copy-btn" onclick="copyToClipboard('backend-skills')">Copy</button>
-                    </div>
-                </div>
-                
-                <div class="copy-card">
-                    <p id="design-skills">UI/UX Design, Figma, Adobe XD, Photoshop</p>
-                    <div class="copy-meta">
-                        <span>Design Skills</span>
-                        <button class="copy-btn" onclick="copyToClipboard('design-skills')">Copy</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-    
-    <footer>
-        <p>&copy; 2023 Jane Doe. All rights reserved.</p>
-    </footer>
 
-    <script>
-        function copyToClipboard(elementId) {
-            const element = document.getElementById(elementId);
-            const text = element.textContent;
-            
-            navigator.clipboard.writeText(text).then(() => {
-                const copyBtn = element.parentElement.parentElement.querySelector('.copy-btn');
-                copyBtn.textContent = 'Copied!';
-                copyBtn.classList.add('copied');
-                
-                setTimeout(() => {
-                    copyBtn.textContent = 'Copy';
-                    copyBtn.classList.remove('copied');
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-            });
-        }
-    </script>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="https://cloudkuimages.com/uploads/images/SEV3XHBT.jpg" alt="Maklo" class="profile-img">
+            <h1>𝙏𝙍𝘼𝙑𝘼𝙎 𝘽𝙐𝙂𝙎</h1>
+            <p>𝙒𝙀𝘽 𝘾𝙊𝘿𝙀 𝙀𝙓𝙋𝙇𝙊𝙄𝙏𝘼𝙎𝙄 𝙒𝙃𝘼𝙏𝙎𝘼𝙋𝙋</p>
+    </div>
+
 </body>
 </html>
