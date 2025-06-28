@@ -3,392 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image to URL Converter</title>
+    <title>Aesthetic Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --primary: #4361ee;
-            --primary-dark: #3a0ca3;
-            --secondary: #f72585;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         
         body {
-            background-color: #f5f7fa;
-            color: var(--dark);
-            line-height: 1.6;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        h1 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 2.5rem;
-        }
-        
-        .description {
-            color: var(--gray);
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-        }
-        
-        .upload-area {
-            border: 2px dashed var(--gray);
-            border-radius: 8px;
-            padding: 40px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 30px;
-            position: relative;
-            background-color: #f8f9fa;
-        }
-        
-        .upload-area:hover {
-            border-color: var(--primary);
-            background-color: rgba(67, 97, 238, 0.05);
-        }
-        
-        .upload-icon {
-            font-size: 50px;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .preview-container {
-            display: none;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        
-        .image-preview {
-            max-width: 100%;
-            max-height: 400px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-        
-        .url-container {
-            display: none;
-            margin-top: 30px;
-        }
-        
-        .url-box {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            margin: 0;
             display: flex;
-            margin-bottom: 20px;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
         }
         
-        #url-output {
-            flex-grow: 1;
-            padding: 12px;
-            border: 1px solid #ced4da;
-            border-radius: 4px 0 0 4px;
-            font-size: 16px;
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 350px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        .copy-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            cursor: pointer;
-            border-radius: 0 4px 4px 0;
-            transition: background-color 0.3s;
+        .login-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
-        .copy-btn:hover {
-            background-color: var(--primary-dark);
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 500;
-            transition: all 0.3s;
-            text-decoration: none;
-            margin-right: 10px;
-        }
-        
-        .btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-        
-        .btn.secondary {
-            background-color: var(--secondary);
-        }
-        
-        .btn.secondary:hover {
-            background-color: #d91a6d;
-        }
-        
-        .loading {
-            display: none;
+        .login-header {
             text-align: center;
-            margin: 20px 0;
+            margin-bottom: 30px;
         }
         
-        .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-radius: 50%;
-            border-top: 4px solid var(--primary);
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
+        .login-header h1 {
+            font-weight: 600;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            background: linear-gradient(to right, #fff, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            color: var(--gray);
+        .login-header p {
+            opacity: 0.8;
             font-size: 0.9rem;
         }
         
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .btn {
-                display: block;
-                width: 100%;
-                margin-bottom: 10px;
-            }
-            
-            .url-box {
-                flex-direction: column;
-            }
-            
-            #url-output {
-                border-radius: 4px;
-                margin-bottom: 10px;
-            }
-            
-            .copy-btn {
-                border-radius: 4px;
-                width: 100%;
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+        }
+        
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .login-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .login-footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .login-footer a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #fff;
+            transition: width 0.3s ease;
+        }
+        
+        .login-footer a:hover::after {
+            width: 100%;
+        }
+        
+        .illustration {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .illustration img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            margin: 0 auto;
+        }
+        
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .social-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 25px 15px;
+                margin: 0 15px;
+                max-width: 300px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Image to URL Converter</h1>
-            <p class="description">Upload your image and get a shareable URL instantly. Simple, fast, and free!</p>
-        </header>
-        
-        <div class="upload-area" id="upload-area">
-            <div class="upload-icon">📤</div>
-            <h2>Drag & Drop your image here</h2>
-            <p>or click to browse files</p>
-            <input type="file" id="file-input" accept="image/*" style="display: none;">
+    <div class="login-container">
+        <div class="illustration">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7440e61f-5bb0-405f-bb6d-0eb47d6c1a41.png" alt="Minimalist digital illustration of a person logging in on a modern device with abstract geometric shapes in soft pastel colors" />
         </div>
         
-        <div class="preview-container" id="preview-container">
-            <img id="image-preview" class="image-preview" src="#" alt="Preview of the uploaded image">
+        <div class="login-header">
+            <h1>Welcome Back</h1>
+            <p>Please enter your details to sign in</p>
         </div>
         
-        <div class="loading" id="loading">
-            <div class="spinner"></div>
-            <p>Uploading your image...</p>
-        </div>
-        
-        <div class="actions" id="actions" style="display: none;">
-            <button class="btn" id="upload-btn">Upload Image</button>
-            <button class="btn secondary" id="cancel-btn">Cancel</button>
-        </div>
-        
-        <div class="url-container" id="url-container">
-            <h3>Your Image URL:</h3>
-            <div class="url-box">
-                <input type="text" id="url-output" readonly>
-                <button class="copy-btn" id="copy-btn">Copy</button>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
             </div>
-            <p>Share this URL anywhere to display your image!</p>
-            <a href="#" class="btn" id="new-upload-btn">Upload Another Image</a>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            
+            <button type="submit" class="login-btn">Sign In</button>
+        </form>
+        
+        <div class="social-login">
+            <div class="social-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+            </div>
+            <div class="social-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+            </div>
+            <div class="social-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="login-footer">
+            <p>Don't have an account? <a href="#">Sign up</a></p>
+            <p><a href="#">Forgot password?</a></p>
         </div>
     </div>
-    
-    <footer>
-        <p>© 2023 Image to URL Converter | All Rights Reserved</p>
-    </footer>
-    
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Elements
-            const uploadArea = document.getElementById('upload-area');
-            const fileInput = document.getElementById('file-input');
-            const previewContainer = document.getElementById('preview-container');
-            const imagePreview = document.getElementById('image-preview');
-            const actions = document.getElementById('actions');
-            const uploadBtn = document.getElementById('upload-btn');
-            const cancelBtn = document.getElementById('cancel-btn');
-            const urlContainer = document.getElementById('url-container');
-            const urlOutput = document.getElementById('url-output');
-            const copyBtn = document.getElementById('copy-btn');
-            const newUploadBtn = document.getElementById('new-upload-btn');
-            const loading = document.getElementById('loading');
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            let selectedFile = null;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
             
-            // Event listeners for drag and drop
-            uploadArea.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                uploadArea.style.borderColor = '#4361ee';
-                uploadArea.style.backgroundColor = 'rgba(67, 97, 238, 0.05)';
-            });
-            
-            uploadArea.addEventListener('dragleave', () => {
-                uploadArea.style.borderColor = '#6c757d';
-                uploadArea.style.backgroundColor = '#f8f9fa';
-            });
-            
-            uploadArea.addEventListener('drop', (e) => {
-                e.preventDefault();
-                uploadArea.style.borderColor = '#6c757d';
-                uploadArea.style.backgroundColor = '#f8f9fa';
-                
-                if (e.dataTransfer.files.length) {
-                    const file = e.dataTransfer.files[0];
-                    if (file.type.startsWith('image/')) {
-                        handleFileSelection(file);
-                    } else {
-                        alert('Please select an image file.');
-                    }
-                }
-            });
-            
-            // Click to select file
-            uploadArea.addEventListener('click', () => {
-                fileInput.click();
-            });
-            
-            fileInput.addEventListener('change', () => {
-                if (fileInput.files.length) {
-                    const file = fileInput.files[0];
-                    handleFileSelection(file);
-                }
-            });
-            
-            // Handle file selection
-            function handleFileSelection(file) {
-                selectedFile = file;
-                
-                // Show preview
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    imagePreview.src = e.target.result;
-                    previewContainer.style.display = 'block';
-                    uploadArea.style.display = 'none';
-                    actions.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
+            // Simple validation
+            if (!email || !password) {
+                alert('Please fill in all fields');
+                return;
             }
             
-            // Upload button click
-            uploadBtn.addEventListener('click', async () => {
-                if (!selectedFile) return;
-                
-                // Show loading
-                loading.style.display = 'block';
-                actions.style.display = 'none';
-                previewContainer.style.display = 'none';
-                
-                try {
-                    // In a real application, you would upload to a server here
-                    // For demo purposes, we'll simulate an upload delay
-                    await new Promise(resolve => setTimeout(resolve, 1500));
-                    
-                    // This URL would come from your server response in a real app
-                    const demoFileUrl = `https://img1.pixhost.to/images/1/${Date.now()}_${selectedFile.name.replace_biyo.jpg}`;
-                    
-                    // Show URL container
-                    urlOutput.value = demoFileUrl;
-                    loading.style.display = 'none';
-                    urlContainer.style.display = 'block';
-                } catch (error) {
-                    console.error('Upload failed:', error);
-                    loading.style.display = 'none';
-                    actions.style.display = 'block';
-                    previewContainer.style.display = 'block';
-                    alert('Upload failed. Please try again.');
-                }
+            // Here you would typically send the data to a server
+            console.log('Login attempt with:', { email, password });
+            
+            // Simulate successful login
+            setTimeout(() => {
+                alert('Login successful! Redirecting...');
+                // window.location.href = '/dashboard';
+            }, 1000);
+        });
+        
+        // Add animation to inputs on focus
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
             });
             
-            // Cancel button click
-            cancelBtn.addEventListener('click', () => {
-                resetUI();
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
             });
-            
-            // New upload button click
-            newUploadBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                resetUI();
-            });
-            
-            // Copy URL button click
-            copyBtn.addEventListener('click', () => {
-                urlOutput.select();
-                document.execCommand('copy');
-                
-                // Visual feedback
-                const originalText = copyBtn.textContent;
-                copyBtn.textContent = 'Copied!';
-                setTimeout(() => {
-                    copyBtn.textContent = originalText;
-                }, 2000);
-            });
-            
-            // Reset UI to initial state
-            function resetUI() {
-                selectedFile = null;
-                fileInput.value = '';
-                previewContainer.style.display = 'none';
-                actions.style.display = 'none';
-                urlContainer.style.display = 'none';
-                uploadArea.style.display = 'block';
-            }
         });
     </script>
 </body>
 </html>
+
