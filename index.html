@@ -3,270 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aesthetic Login</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Travas Web Exploitasi</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        :root {
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --accent-color: #ff006e;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            height: 100vh;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
+            background-color: var(--dark-color);
+            color: var(--dark-color);
+            line-height: 1.6;
         }
         
-        .login-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            width: 90%;
-            max-width: 350px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
         }
         
-        .login-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        .login-header {
+        header {
             text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .login-header h1 {
-            font-weight: 600;
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-            background: linear-gradient(to right, #fff, #e0e0e0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .login-header p {
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 12px 15px;
-            border-radius: 10px;
-            border: none;
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .form-group input:focus {
-            outline: none;
-            background: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
-        }
-        
-        .form-group input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
-        .login-btn {
-            width: 100%;
-            padding: 12px;
-            border-radius: 10px;
-            border: none;
-            background: linear-gradient(to right, #667eea, #764ba2);
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
+            border-radius: 0 0 20px 20px;
         }
         
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
         
-        .login-footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9rem;
+        .profile {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            margin: 0 auto 1rem;
         }
         
-        .login-footer a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
+        section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: dark;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
             position: relative;
+            padding-bottom: 0.5rem;
         }
         
-        .login-footer a::after {
+        h2::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
+            bottom: 0;
             left: 0;
-            background-color: #fff;
-            transition: width 0.3s ease;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
         }
         
-        .login-footer a:hover::after {
-            width: 100%;
+        .copy-section {
+            margin: 1.5rem 0;
         }
         
-        .illustration {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .illustration img {
-            max-width: 90%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            margin: 0 auto;
-        }
-        
-        .social-login {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
+        .copy-card {
+            background-color: #000000;
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+            border-radius: 0 5px 5px 0;
             transition: all 0.3s ease;
+        }
+        
+        .copy-card:hover {
+            background-color: #000000;
+        }
+        
+        .copy-card p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .copy-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: var(--primary-color);
+            color: dark;
+            border: none;
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
             cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
         }
         
-        .social-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
+        .copy-btn:hover {
+            background-color: var(--secondary-color);
         }
         
-        @media (max-width: 480px) {
-            .login-container {
-                padding: 25px 15px;
-                margin: 0 15px;
-                max-width: 300px;
+        .copy-btn.copied {
+            background-color: var(--accent-color);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--dark-color);
+            color: white;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            section {
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="illustration">
-            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7440e61f-5bb0-405f-bb6d-0eb47d6c1a41.png" alt="Minimalist digital illustration of a person logging in on a modern device with abstract geometric shapes in soft pastel colors" />
-        </div>
+    <header>
+        <img src="https://cloudkuimages.com/uploads/images/BRTMQ215.jpg" alt="Professional portrait of a web developer in modern business casual attire" class="profile">
+        <h1>Travas Exploit</h1>
+        <p>Web Exploitasi Code Whatsapp</p>
+    </header>
+    
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I'm a passionate web developer with 5 years of experience creating modern, responsive websites and web applications. Specializing in front-end development with expertise in HTML, CSS, JavaScript, and React.</p>
+        </section>
         
-        <div class="login-header">
-            <h1>Welcome Back</h1>
-            <p>Please enter your details to sign in</p>
-        </div>
+        <section id="contact">
+            <h2>Contact Information</h2>
+            <div class="copy-section">
+                <div class="copy-card">
+                    <p id="email">jane.doe@example.com</p>
+                    <div class="copy-meta">
+                        <span>Email Address</span>
+                        <button class="copy-btn" onclick="copyToClipboard('email')">Copy</button>
+                    </div>
+                </div>
+                
+                <div class="copy-card">
+                    <p id="phone">+1 (555) 123-4567</p>
+                    <div class="copy-meta">
+                        <span>Phone Number</span>
+                        <button class="copy-btn" onclick="copyToClipboard('phone')">Copy</button>
+                    </div>
+                </div>
+                
+                <div class="copy-card">
+                    <p id="portfolio-link">https://portfolio.janedoe.dev</p>
+                    <div class="copy-meta">
+                        <span>Portfolio Link</span>
+                        <button class="copy-btn" onclick="copyToClipboard('portfolio-link')">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="Enter your email" required>
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="copy-section">
+                <div class="copy-card">
+                    <p id="frontend-skills">HTML5, CSS3, JavaScript, React, Vue.js, TailwindCSS</p>
+                    <div class="copy-meta">
+                        <span>Frontend Skills</span>
+                        <button class="copy-btn" onclick="copyToClipboard('frontend-skills')">Copy</button>
+                    </div>
+                </div>
+                
+                <div class="copy-card">
+                    <p id="backend-skills">Node.js, Express, MongoDB, PostgreSQL</p>
+                    <div class="copy-meta">
+                        <span>Backend Skills</span>
+                        <button class="copy-btn" onclick="copyToClipboard('backend-skills')">Copy</button>
+                    </div>
+                </div>
+                
+                <div class="copy-card">
+                    <p id="design-skills">UI/UX Design, Figma, Adobe XD, Photoshop</p>
+                    <div class="copy-meta">
+                        <span>Design Skills</span>
+                        <button class="copy-btn" onclick="copyToClipboard('design-skills')">Copy</button>
+                    </div>
+                </div>
             </div>
-            
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter your password" required>
-            </div>
-            
-            <button type="submit" class="login-btn">Sign In</button>
-        </form>
-        
-        <div class="social-login">
-            <div class="social-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                </svg>
-            </div>
-            <div class="social-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                </svg>
-            </div>
-            <div class="social-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                </svg>
-            </div>
-        </div>
-        
-        <div class="login-footer">
-            <p>Don't have an account? <a href="#">Sign up</a></p>
-            <p><a href="#">Forgot password?</a></p>
-        </div>
+        </section>
     </div>
+    
+    <footer>
+        <p>&copy; 2023 Jane Doe. All rights reserved.</p>
+    </footer>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
             
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            // Simple validation
-            if (!email || !password) {
-                alert('Please fill in all fields');
-                return;
-            }
-            
-            // Here you would typically send the data to a server
-            console.log('Login attempt with:', { email, password });
-            
-            // Simulate successful login
-            setTimeout(() => {
-                alert('Login successful! Redirecting...');
-                // window.location.href = '/dashboard';
-            }, 1000);
-        });
-        
-        // Add animation to inputs on focus
-        const inputs = document.querySelectorAll('input');
-        inputs.forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.style.transform = 'scale(1.02)';
+            navigator.clipboard.writeText(text).then(() => {
+                const copyBtn = element.parentElement.parentElement.querySelector('.copy-btn');
+                copyBtn.textContent = 'Copied!';
+                copyBtn.classList.add('copied');
+                
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy';
+                    copyBtn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
             });
-            
-            input.addEventListener('blur', function() {
-                this.parentElement.style.transform = 'scale(1)';
-            });
-        });
+        }
     </script>
 </body>
 </html>
-
