@@ -1,60 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travas Exploitasi</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #000000;
-            color: #000000;
-            margin: 0;
-            padding: 20px;
-        }
-        .profile-container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .profile-header {
-            text-align: center;
-            margin-bottom: 20px;
-            margin-top: 10px;
-        }
-        .profile-header h1 {
-            margin: 0;
-        }
-        .profile-header p {
-            color: #777;
-        }
-        .contact-info {
-            margin-top: 20px;
-        }
-        .contact-info p {
-            margin: 5px 0;
-        }
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 15px;
-            border: 3px solid #f0f0f0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>APK BUG BY ALWAYSRIKY</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://files.catbox.moe/mp9vqc.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 80px;
+      font-weight: bold;
+      margin-bottom: 80px;
+      text-shadow: 4px 4px 12px #000;
+    }
+
+    input[type="text"], input[type="password"] {
+      padding: 25px;
+      font-size: 40px;
+      width: 95%;
+      max-width: 700px;
+      border-radius: 15px;
+      border: none;
+      margin-bottom: 40px;
+      text-align: center;
+      box-shadow: 0 0 15px #000;
+    }
+
+    .button-group button, .login-box button {
+      margin: 25px;
+      padding: 25px 60px;
+      font-size: 45px;
+      font-weight: bold;
+      border: none;
+      border-radius: 20px;
+      background-color: #1e90ff;
+      color: white;
+      cursor: pointer;
+      box-shadow: 4px 4px 12px #000;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .button-group button:hover, .login-box button:hover {
+      background-color: #005bb5;
+      transform: scale(1.1);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Tombol Logout di kanan atas */
+    #logoutBtn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 30px;
+      padding: 15px 30px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: none;
+      box-shadow: 3px 3px 10px #000;
+    }
+
+    #logoutBtn:hover {
+      background-color: darkred;
+    }
+
+  </style>
 </head>
 <body>
 
-    <div class="profile-container">
-        <div class="profile-header">
-            <img src="https://cloudkuimages.com/uploads/images/SEV3XHBT.jpg" alt="Maklo" class="profile-img">
-            <h1>𝙏𝙍𝘼𝙑𝘼𝙎 𝘽𝙐𝙂𝙎</h1>
-            <p>𝙒𝙀𝘽 𝘾𝙊𝘿𝙀 𝙀𝙓𝙋𝙇𝙊𝙄𝙏𝘼𝙎𝙄 𝙒𝙃𝘼𝙏𝙎𝘼𝙋𝙋</p>
+  <h1>APK BUG BY ALWAYSRIKY</h1>
+
+  <!-- Tombol Logout -->
+  <button id="logoutBtn" onclick="logout()">LOG OUT</button>
+
+  <!-- Login Form -->
+  <div class="login-box" id="loginBox">
+    <input type="text" id="username" placeholder="Username"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <button onclick="login()">LOGIN</button>
+  </div>
+
+  <!-- Main APK Bug Form -->
+  <div id="mainContent" class="hidden">
+    <input type="text" id="nomor" placeholder="Masukkan Nomor Target"><br>
+    <div class="button-group">
+      <button onclick="kirimKeBot('FORCE')">FORCE</button>
+      <button onclick="kirimKeBot('DELAY')">DELAY</button>
+      <button onclick="kirimKeBot('INVIS')">INVIS</button>
     </div>
+    <div id="status" style="font-size: 35px; margin-top: 40px;"></div>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      if (user === "alwaysriky" && pass === "alwaysriky") {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("mainContent").classList.remove("hidden");
+        document.getElementById("logoutBtn").style.display = "inline-block";
+      } else {
+        alert("Login gagal! Username atau password salah.");
+      }
+    }
+
+    function logout() {
+      document.getElementById("mainContent").classList.add("hidden");
+      document.getElementById("loginBox").style.display = "block";
+      document.getElementById("logoutBtn").style.display = "none";
+    }
+
+    function kirimKeBot(mode) {
+      const nomor = document.getElementById("nomor").value;
+      const status = document.getElementById("status");
+
+      if (!nomor) {
+        alert("Masukkan nomor terlebih dahulu!");
+        return;
+      }
+
+      // Contoh kirim data ke bot (ubah URL ke IP/server bot kamu)
+      fetch("https://your-server.com/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ nomor: nomor, mode: mode })
+      })
+      .then(res => res.text())
+      .then(res => {
+        status.innerText = "✅ Berhasil dikirim ke bot!";
+      })
+      .catch(err => {
+        status.innerText = "❌ Gagal mengirim ke bot!";
+      });
+    }
+  </script>
 
 </body>
 </html>
