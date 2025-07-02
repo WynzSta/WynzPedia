@@ -136,32 +136,61 @@
       document.getElementById("logoutBtn").style.display = "none";
     }
 
-    function kirimKeBot(mode) {
-      const nomor = document.getElementById("nomor").value;
-      const status = document.getElementById("status");
-
-      if (!nomor) {
-        alert("Masukkan nomor terlebih dahulu!");
-        return;
-      }
-
-      // Contoh kirim data ke bot (ubah URL ke IP/server bot kamu)
-      fetch("https://asytzy-dev.asymodss.my.id/server/console/Hallo", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ nomor: nomor, mode: mode })
-      })
-      .then(res => res.text())
-      .then(res => {
-        status.innerText = "✅ Berhasil dikirim ke bot!";
-      })
-      .catch(err => {
-        status.innerText = "❌ Gagal mengirim ke bot!";
-      });
-    }
-  </script>
+    async function sendForcecall() {  
+const phone = phoneInput.value.trim();  
+if (!phone) {  
+  statusEl.textContent = '❌ Nomor belum diisi';  
+  return;  
+}  
+statusEl.textContent = '⏳ Mengirim Forcecall...';  
+try {  
+  const res = await fetch(`/api/bug/forceall?target=${encodeURIComponent(phone)}`);  
+  const data = await res.json();  
+  statusEl.textContent = data.status ? '✅ Forcecall berhasil!' : `⚠️ Gagal: ${data.message || data.error || 'Unknown'}`;  
+} catch (err) {  
+  console.error(err);  
+  statusEl.textContent = '🚫 Gagal terhubung ke API';  
+}  
+ }  
+  
+  async function sendDelay() {  
+const phone = phoneInput.value.trim();  
+if (!phone) {  
+  statusEl.textContent = '❌ Nomor belum diisi';  
+  return;  
+}  
+statusEl.textContent = '⏳ Mengirim Forcecall...';  
+try {  
+  const res = await fetch(`/api/bug/delay?target=${encodeURIComponent(phone)}`);  
+  const data = await res.json();  
+  statusEl.textContent = data.status ? '✅ Forcecall berhasil!' : `⚠️ Gagal: ${data.message || data.error || 'Unknown'}`;  
+} catch (err) {  
+  console.error(err);  
+  statusEl.textContent = '🚫 Gagal terhubung ke API';  
+}  
+ }
+  
+ async function sendCarousels() {  
+const phone = phoneInput.value.trim();  
+if (!phone) {  
+  statusEl.textContent = '❌ Nomor belum diisi';  
+  return;  
+}  
+statusEl.textContent = '⏳ Mengirim Forcecall...';  
+try {  
+  const res = await fetch(`/api/bug/ios?target=${encodeURIComponent(phone)}`);  
+  const data = await res.json();  
+  statusEl.textContent = data.status ? '✅ Forcecall berhasil!' : `⚠️ Gagal: ${data.message || data.error || 'Unknown'}`;  
+} catch (err) {  
+  console.error(err);  
+  statusEl.textContent = '🚫 Gagal terhubung ke API';  
+}  
+}  
+  
+ document.getElementById('btnDelay').onclick = sendDelay;  
+ document.getElementById('btnAndroid').onclick = sendForcecall;  
+ document.getElementById('btnIOS').onclick = sendCarousels;  
+  </script> 
 
 </body>
 </html>
