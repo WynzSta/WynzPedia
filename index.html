@@ -95,13 +95,27 @@
   <div id="mainContent" class="hidden">
     <input type="text" id="nomor" placeholder="Masukkan Nomor Target"><br>
     <div class="button-group">
-      <button onclick="kirimKeBot('FORCE')">FORCE</button>
-      <button onclick="kirimKeBot('DELAY')">DELAY</button>
-      <button onclick="kirimKeBot('INVIS')">INVIS</button>
-    </div>
-    <div id="status" style="font-size: 35px; margin-top: 40px;"></div>
-  </div>
+  <button type="button" id="btnDelay"  
+ class="w-full py-2 bg-red-500 hover:bg-red-600 text-white rounded-md">  
+ Delay Only  
+  </button>  
+<div class="flex justify-between gap-3">  
+  <button type="button" id="btnAndroid"  
+ class="w-full py-2 bg-green-500 hover:bg-green-600 text-white rounded-md">  
+ Crash Android
+  </button>  
+  <button type="button" id="btnIOS"  
+ class="w-full py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md">  
+ Crash iOS  
+  </button>  
+</div>  
 
+<p id="status" class="text-center text-sm h-5"></p>  
+ </form>  
+  </div>  
+ <div id="credit">© 2025 Denny Kaze || Bugs App</div>  
+ <a a href="https://wa.me/62882017827064" id="supportBtn">Support</a>  
+</div>
   <script>
     function login() {
       const user = document.getElementById("username").value;
