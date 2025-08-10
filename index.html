@@ -1,196 +1,126 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <title>APK BUG BY ALWAYSRIKY</title>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Kageyamainvictus
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: url('https://files.catbox.moe/mp9vqc.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
+   body {
+      font-family: 'Orbitron', monospace;
+      background-color: #0a0a0a;
     }
-
-    h1 {
-      font-size: 80px;
-      font-weight: bold;
-      margin-bottom: 80px;
-      text-shadow: 4px 4px 12px #000;
+    .neon-text {
+      text-shadow:
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #00ffff;
     }
-
-    input[type="text"], input[type="password"] {
-      padding: 25px;
-      font-size: 40px;
-      width: 95%;
-      max-width: 700px;
-      border-radius: 15px;
-      border: none;
-      margin-bottom: 40px;
-      text-align: center;
-      box-shadow: 0 0 15px #000;
+    .neon-button {
+      box-shadow:
+        0 0 8px #fff,
+        0 0 15px #fff,
+        0 0 20px #fff,
+        0 0 40px #fff;
     }
-
-    .button-group button, .login-box button {
-      margin: 25px;
-      padding: 25px 60px;
-      font-size: 45px;
-      font-weight: bold;
-      border: none;
-      border-radius: 20px;
-      background-color: #1e90ff;
-      color: white;
-      cursor: pointer;
-      box-shadow: 4px 4px 12px #000;
-      transition: background 0.3s, transform 0.2s;
+    .glow-border {
+      box-shadow:
+        0 0 8px #fff,
+        0 0 15px #fff,
+        0 0 20px #fff;
     }
-
-    .button-group button:hover, .login-box button:hover {
-      background-color: #005bb5;
-      transform: scale(1.1);
+    .glow-small {
+      box-shadow:
+        0 0 4px #fff,
+        0 0 8px #fff;
     }
-
-    .hidden {
-      display: none;
-    }
-
-    /* Tombol Logout di kanan atas */
-    #logoutBtn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 30px;
-      padding: 15px 30px;
-      background-color: red;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      display: none;
-      box-shadow: 3px 3px 10px #000;
-    }
-
-    #logoutBtn:hover {
-      background-color: darkred;
-    }
-
   </style>
-</head>
-<body>
-
-  <h1>APK BUG BY ALWAYSRIKY</h1>
-
-  <!-- Tombol Logout -->
-  <button id="logoutBtn" onclick="logout()">LOG OUT</button>
-
-  <!-- Login Form -->
-  <div class="login-box" id="loginBox">
-    <input type="text" id="username" placeholder="Username"><br>
-    <input type="password" id="password" placeholder="Password"><br>
-    <button onclick="login()">LOGIN</button>
-  </div>
-
-  <!-- Main APK Bug Form -->
-  <div id="mainContent" class="hidden">
-    <input type="text" id="nomor" placeholder="Masukkan Nomor Target"><br>
-    <div class="button-group">
-  <button type="button" id="btnDelay"  
- class="w-full py-2 bg-red-500 hover:bg-red-600 text-white rounded-md">  
- Delay Only  
-  </button>  
-<div class="flex justify-between gap-3">  
-  <button type="button" id="btnAndroid"  
- class="w-full py-2 bg-green-500 hover:bg-green-600 text-white rounded-md">  
- Crash Android
-  </button>  
-  <button type="button" id="btnIOS"  
- class="w-full py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md">  
- Crash iOS  
-  </button>  
-</div>  
-
-<p id="status" class="text-center text-sm h-5"></p>  
- </form>  
-  </div>  
- <div id="credit">© 2025 Denny Kaze || Bugs App</div>  
- <a a href="https://wa.me/62882017827064" id="supportBtn">Support</a>  
-</div>
-  <script>
-    function login() {
-      const user = document.getElementById("username").value;
-      const pass = document.getElementById("password").value;
-
-      if (user === "alwaysriky" && pass === "alwaysriky") {
-        document.getElementById("loginBox").style.display = "none";
-        document.getElementById("mainContent").classList.remove("hidden");
-        document.getElementById("logoutBtn").style.display = "inline-block";
-      } else {
-        alert("Login gagal! Username atau password salah.");
-      }
-    }
-
-    function logout() {
-      document.getElementById("mainContent").classList.add("hidden");
-      document.getElementById("loginBox").style.display = "block";
-      document.getElementById("logoutBtn").style.display = "none";
-    }
-
-    async function sendForcecall() {  
-const phone = phoneInput.value.trim();  
-if (!phone) {  
-  statusEl.textContent = '❌ Nomor belum diisi';  
-  return;  
-}  
-statusEl.textContent = '⏳ Mengirim Forcecall...';  
-try {  
-  const res = await fetch(`/api/bug/forceall?target=${encodeURIComponent(phone)}`);  
-  const data = await res.json();  
-  statusEl.textContent = data.status ? '✅ Forcecall berhasil!' : `⚠️ Gagal: ${data.message || data.error || 'Unknown'}`;  
-} catch (err) {  
-  console.error(err);  
-  statusEl.textContent = '🚫 Gagal terhubung ke API';  
-}  
- }  
-  
-  async function sendDelay() {  
-const phone = phoneInput.value.trim();  
-if (!phone) {  
-  statusEl.textContent = '❌ Nomor belum diisi';  
-  return;  
-}  
-statusEl.textContent = '⏳ Mengirim Forcecall...';  
-try {  
-  const res = await fetch(`/api/bug/delay?target=${encodeURIComponent(phone)}`);  
-  const data = await res.json();  
-  statusEl.textContent = data.status ? '✅ Forcecall berhasil!' : `⚠️ Gagal: ${data.message || data.error || 'Unknown'}`;  
-} catch (err) {  
-  console.error(err);  
-  statusEl.textContent = '🚫 Gagal terhubung ke API';  
-}  
- }
-  
- async function sendCarousels() {  
-const phone = phoneInput.value.trim();  
-if (!phone) {  
-  statusEl.textContent = '❌ Nomor belum diisi';  
-  return;  
-}  
-statusEl.textContent = '⏳ Mengirim Forcecall...';  
-try {  
-  const res = await fetch(`/api/bug/ios?target=${encodeURIComponent(phone)}`);  
-  const data = await res.json();  
-  statusEl.textContent = data.status ? '✅ Forcecall berhasil!' : `⚠️ Gagal: ${data.message || data.error || 'Unknown'}`;  
-} catch (err) {  
-  console.error(err);  
-  statusEl.textContent = '🚫 Gagal terhubung ke API';  
-}  
-}  
-  
- document.getElementById('btnDelay').onclick = sendDelay;  
- document.getElementById('btnAndroid').onclick = sendForcecall;  
- document.getElementById('btnIOS').onclick = sendCarousels;  
-  </script> 
-
-</body>
+ </head>
+ <body class="min-h-screen flex flex-col">
+  <header class="bg-[#0ea5e9] p-3">
+   <h1 class="text-white font-bold text-lg select-none">
+    Kageyamainvictus
+   </h1>
+  </header>
+  <main class="flex-grow flex justify-center items-center p-4">
+   <section class="bg-[#1a1a1a]/90 rounded-xl p-6 max-w-md w-full space-y-5 relative" style="box-shadow: 0 0 20px #222;">
+    <div class="flex items-center space-x-4">
+     <img alt="Circular logo with red and white colors and text inside" class="rounded-full border border-white" height="60" src="https://storage.googleapis.com/a1aa/image/60efe109-81e4-4a54-1ce7-ae76598168fb.jpg" width="60"/>
+     <div>
+      <p class="text-white text-xl font-semibold">
+       buyer1
+      </p>
+      <p class="text-gray-400 flex items-center space-x-2">
+       <span class="w-4 h-4 rounded-full bg-white inline-block">
+       </span>
+       <span>
+        Connected
+       </span>
+      </p>
+     </div>
+    </div>
+    <p class="text-cyan-400 text-2xl neon-text flex items-center space-x-2 font-semibold">
+     <i class="fab fa-whatsapp">
+     </i>
+     <span>
+      Kageyamainvictus
+     </span>
+    </p>
+    <input class="w-full bg-[#222222] rounded-lg px-4 py-2 text-gray-600 font-semibold focus:outline-none" placeholder="628xxxx" type="text"/>
+    <button class="w-full bg-[#222222] rounded-lg px-4 py-3 text-white text-lg flex items-center space-x-3 glow-border font-semibold">
+     <i class="fas fa-skull-crossbones">
+     </i>
+     <span>
+      FC Invisible
+     </span>
+    </button>
+    <button class="w-full bg-[#222222] rounded-lg px-4 py-3 text-white text-lg flex items-center space-x-3 font-semibold">
+     <i class="fas fa-bomb">
+     </i>
+     <span>
+      Boom WA
+     </span>
+    </button>
+    <button class="w-full bg-[#222222] rounded-lg px-4 py-3 text-white text-lg flex items-center space-x-3 font-semibold">
+     <i class="far fa-clock">
+     </i>
+     <span>
+      Invisible Delay
+     </span>
+    </button>
+    <button class="w-full bg-[#222222] rounded-lg px-4 py-3 text-white text-lg flex items-center space-x-3 font-semibold">
+     <i class="fas fa-eye-slash">
+     </i>
+     <span>
+      Blank WhatsApp
+     </span>
+    </button>
+    <button class="w-full bg-white rounded-full py-3 text-black text-lg flex items-center justify-center space-x-3 neon-button font-semibold">
+     <i class="fas fa-bug">
+     </i>
+     <span>
+      Kirim Bug
+     </span>
+    </button>
+    <button class="mx-auto px-6 py-2 rounded-md text-white text-lg glow-small font-semibold bg-transparent border border-white">
+     Logout
+    </button>
+    <p class="text-white font-semibold mt-4">
+     Contact Developer:
+     <a class="text-cyan-500 hover:underline ml-1 inline-flex items-center space-x-1" href="https://t.me/DEFFA568" target="_blank">
+      <i class="fab fa-telegram">
+      </i>
+      <span>
+       @DEFFA568
+      </span>
+     </a>
+    </p>
+   </section>
+  </main>
+ </body>
 </html>
