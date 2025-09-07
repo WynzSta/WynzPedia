@@ -1,205 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Login Portal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Wolf Confess</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            background: linear-gradient(135deg, #b22222 0%, #8b0000 100%); /* merah gelap */
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Arial', sans-serif;
-            overflow: hidden; /* mencegah scroll */
-        }
-        .login-container, .dashboard-container {
-            background: rgba(0, 0, 0, 0.9); /* hitam transparan */
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-            color: white; /* teks putih agar kontras */
+        .moving-button {
             position: relative;
+            transition: all 0.2s;
         }
-        .login-container {
-            display: block;
-        }
-        .dashboard-container {
-            display: none;
-        }
-        /* Garis-garis menyala merah */
-        .glow-line {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: 2px solid #ff0000;
-            border-radius: 15px;
-            animation: glow-line 1.5s infinite;
+        .no-animation {
             pointer-events: none;
-        }
-        @keyframes glow-line {
-            0%, 100% {
-                box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
-                opacity: 0.8;
-            }
-            50% {
-                box-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000;
-                opacity: 1;
-            }
-        }
-        input {
-            margin-bottom: 1rem;
-            padding: 0.75rem;
-            border: 2px solid #444;
-            border-radius: 8px;
-            width: 100%;
-            font-size: 1rem;
-            background-color: #222;
-            color: white;
-        }
-        input::placeholder {
-            color: #bbb;
-        }
-        button {
-            background: linear-gradient(135deg, #b22222, #8b0000);
-            color: white;
-            padding: 0.75rem;
-            border: none;
-            border-radius: 8px;
-            width: 100%;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        button:hover {
-            transform: translateY(-2px);
-            background: linear-gradient(135deg, #8b0000, #b22222);
-        }
-        .error {
-            color: #ff6b6b;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .image-container img {
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.7);
-        }
-        .flex > div {
-            color: white;
-        }
-        /* Foto bulat */
-        .profile-pic {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 2rem;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-            border: 3px solid #ff0000;
-        }
-        .profile-pic img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        /* Loading spinner */
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid #ff0000;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            animation: spin 1s linear infinite;
-            display: inline-block;
-            vertical-align: middle;
-            margin-left: 8px;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg);}
-            100% { transform: rotate(360deg);}
         }
     </style>
 </head>
-<body>
-    <div class="login-container" id="login">
-        <div class="glow-line"></div>
-        <div class="profile-pic">
-            <img src="https://placehold.co/300x300" alt="Circular profile photo for login" />
-        </div>
-        <h2 class="text-3xl font-bold mb-6">Login to Your Account</h2>
-        <form id="loginForm">
-            <input type="text" id="username" placeholder="Username" required />
-            <input type="password" id="password" placeholder="Password" required />
-            <p id="error" class="error" style="display:none;">Invalid credentials. Try again.</p>
-            <button type="submit" id="loginButton">Login</button>
-        </form>
+<body class="bg-gradient-to-br from-pink-100 via-pink-200 to-pink-300 min-h-screen flex items-center justify-center font-sans text-pink-700">
+    <div id="nameForm" class="text-center bg-white bg-opacity-80 rounded-lg p-8 shadow-2xl">
+        <h1 class="text-4xl font-bold mb-4">Masukkan Namamu</h1>
+        <input id="userName" type="text" placeholder="Nama kamu..." class="p-3 rounded-lg border-2 border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-500 text-pink-700 bg-pink-50">
+        <br><br>
+        <button onclick="startConfess()" class="bg-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-pink-600 transition shadow-lg">Mulai</button>
     </div>
 
-    <div class="dashboard-container" id="dashboard">
-        <div class="glow-line"></div>
-        <h2 class="text-3xl font-bold mb-6">Welcome to the Dashboard!</h2>
-        <div class="profile-pic">
-            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7b74125b-994d-439b-b1f1-c98929557eb8.png" alt="Circular profile photo of a professional male user with a neutral expression, short hair, wearing a casual shirt, high quality headshot in a clean, focused portrait style" />
+    <div id="welcomeMessage" class="text-center hidden bg-white bg-opacity-80 rounded-lg p-8 shadow-2xl">
+        <h1 class="text-4xl font-bold text-pink-700">Selamat datang, <span id="nameDisplay"></span>!</h1>
+    </div>
+
+    <div id="confessPage" class="text-center hidden bg-white bg-opacity-80 rounded-lg p-8 shadow-2xl">
+        <h1 class="text-4xl font-bold mb-8 text-pink-700">Mau gak jadi pacarku? 💕</h1>
+        <div class="flex justify-center space-x-4">
+            <button id="noButton" onclick="moveButton()" class="bg-pink-400 text-white px-6 py-3 rounded-lg font-bold hover:bg-pink-500 moving-button shadow-md">Tidak</button>
+            <button onclick="sayYes()" class="bg-pink-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-pink-600 shadow-md">Mau</button>
         </div>
-        <p class="text-lg mb-4">You have successfully logged in. This is your personalized dashboard.</p>
-        <div class="image-container mb-6">
-            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a8a98f59-7a7e-4cf4-99ac-168fcb838438.png" alt="Modern dashboard interface with charts, graphs, and analytics widgets in a clean, professional layout showcasing user data insights" />
+    </div>
+
+    <div id="yesMessage" class="text-center hidden bg-white bg-opacity-80 rounded-lg p-8 shadow-2xl animate-pulse">
+        <h1 class="text-4xl font-bold text-pink-700">Selamat sekarang kamu pacarku! 🎉</h1>
+        <p class="text-pink-600 mt-4">Saya sangat senang! 😊</p>
+        <div class="mt-6">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e705dcc1-4feb-4b91-8a67-d1c359f55387.png" alt="Romantic heart-shaped bouquet of pink roses with soft lighting and water droplets for a dreamy, loving atmosphere" class="mx-auto rounded-lg shadow-md" />
         </div>
-        <div class="flex flex-wrap justify-center gap-4">
-            <div class="bg-red-700 px-4 py-2 rounded-lg">Profile</div>
-            <div class="bg-red-700 px-4 py-2 rounded-lg">Settings</div>
-            <div class="bg-red-700 px-4 py-2 rounded-lg">Projects</div>
-        </div>
-        <button class="mt-6 bg-black text-white px-6 py-2 rounded-lg" onclick="logout()">Logout</button>
     </div>
 
     <script>
-        const login = document.getElementById('login');
-        const dashboard = document.getElementById('dashboard');
-        const form = document.getElementById('loginForm');
-        const error = document.getElementById('error');
-        const loginButton = document.getElementById('loginButton');
+        let userName;
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            error.style.display = 'none';
-
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            if (username === 'admin' && password === 'password') {
-                // Disable button and show spinner
-                loginButton.disabled = true;
-                const spinner = document.createElement('span');
-                spinner.classList.add('spinner');
-                loginButton.appendChild(spinner);
-
-                // Delay 2 seconds before showing dashboard
-                setTimeout(() => {
-                    login.style.display = 'none';
-                    dashboard.style.display = 'block';
-                    loginButton.disabled = false;
-                    spinner.remove();
-                }, 2000);
-            } else {
-                error.style.display = 'block';
+        function startConfess() {
+            userName = document.getElementById('userName').value;
+            if (!userName) {
+                alert('Masukkan nama kamu dulu ya!');
+                return;
             }
-        });
+            document.getElementById('nameForm').classList.add('hidden');
+            document.getElementById('nameDisplay').textContent = userName;
+            document.getElementById('welcomeMessage').classList.remove('hidden');
 
-        function logout() {
-            dashboard.style.display = 'none';
-            login.style.display = 'block';
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
-            error.style.display = 'none';
+            setTimeout(() => {
+                document.getElementById('welcomeMessage').classList.add('hidden');
+                document.getElementById('confessPage').classList.remove('hidden');
+            }, 3000);
+        }
+
+        function moveButton() {
+            const button = document.getElementById('noButton');
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+            button.style.position = 'absolute';
+        }
+
+        function sayYes() {
+            document.getElementById('confessPage').classList.add('hidden');
+            document.getElementById('yesMessage').classList.remove('hidden');
         }
     </script>
 </body>
 </html>
+</content>
+</create_file>
