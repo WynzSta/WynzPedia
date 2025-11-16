@@ -1,72 +1,129 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blood Wolf Confess</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Keren</title>
     <style>
-        .moving-button {
-            position: relative;
-            transition: all 0.2s;
-        }
-        .no-animation {
-            pointer-events: none;
-        }
-    </style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0d0d0d, #300060);
+            color: white;
+            text-align: center;
+        }/* Container utama */
+    .container {
+        padding: 40px 20px;
+    }
+
+    /* Foto bulat */
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #8a2be2;
+        box-shadow: 0 0 15px #8a2be2;
+    }
+
+    .name {
+        margin-top: 20px;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .desc {
+        font-size: 16px;
+        opacity: 0.8;
+        margin-bottom: 30px;
+    }
+
+    /* Box text copy */
+    .copy-box {
+        background: #1a1a1a;
+        padding: 15px;
+        border-radius: 12px;
+        margin: 15px auto;
+        width: 90%;
+        max-width: 500px;
+        border-left: 5px solid #8a2be2;
+        position: relative;
+    }
+
+    .copy-text {
+        font-size: 14px;
+        word-wrap: break-word;
+        margin-bottom: 10px;
+    }
+
+    .copy-btn {
+        background: #8a2be2;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.2s;
+    }
+
+    .copy-btn:hover {
+        background: #6e22b4;
+    }
+</style>
+
 </head>
-<body class="bg-gradient-to-br from-pink-100 via-pink-200 to-pink-300 min-h-screen flex items-center justify-center font-sans text-pink-700">
-    <div id="nameForm" class="text-center bg-white bg-opacity-80 rounded-lg p-8 shadow-2xl">
-        <h1 class="text-4xl font-bold mb-4">Masukkan Namamu</h1>
-        <input id="userName" type="text" placeholder="Nama kamu..." class="p-3 rounded-lg border-2 border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-500 text-pink-700 bg-pink-50">
-        <br><br>
-        <button onclick="startConfess()" class="bg-pink-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-pink-600 transition shadow-lg">Mulai</button>
+<body>
+    <div class="container"><!-- Foto bulat -->
+    <img src="YOUR-PHOTO.jpg" class="profile-pic" alt="Foto Kamu" />
+
+    <!-- Nama dan deskripsi -->
+    <div class="name">Nama Kamu</div>
+    <div class="desc">Deskripsi singkat tentang kamu...</div>
+
+    <!-- 6 Text Box Copy -->
+    <div class="copy-box">
+        <div class="copy-text" id="t1">Teks contoh yang bisa disalin 1...</div>
+        <button class="copy-btn" onclick="copyText('t1')">Salin</button>
     </div>
 
-    <div id="welcomeMessage" class="text-center hidden bg-white bg-opacity-80 rounded-lg p-8 shadow-2xl">
-        <h1 class="text-4xl font-bold text-pink-700">Selamat datang, <span id="nameDisplay"></span>!</h1>
+    <div class="copy-box">
+        <div class="copy-text" id="t2">Teks contoh yang bisa disalin 2...</div>
+        <button class="copy-btn" onclick="copyText('t2')">Salin</button>
     </div>
 
-    <div id="confessPage" class="text-center hidden bg-white bg-opacity-80 rounded-lg p-8 shadow-2xl">
-        <h1 class="text-4xl font-bold mb-8 text-pink-700">Mau gak jadi pacarku? 💕</h1>
-        <div class="flex justify-center space-x-4">
-            <button id="noButton" onclick="moveButton()" class="bg-pink-400 text-white px-6 py-3 rounded-lg font-bold hover:bg-pink-500 moving-button shadow-md">Tidak</button>
-            <button onclick="sayYes()" class="bg-pink-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-pink-600 shadow-md">Mau</button>
-        </div>
+    <div class="copy-box">
+        <div class="copy-text" id="t3">Teks contoh yang bisa disalin 3...</div>
+        <button class="copy-btn" onclick="copyText('t3')">Salin</button>
     </div>
 
-    <div id="yesMessage" class="text-center hidden bg-white bg-opacity-80 rounded-lg p-8 shadow-2xl animate-pulse">
-        <h1 class="text-4xl font-bold text-pink-700">Selamat sekarang kamu pacarku! 🎉</h1>
-        <p class="text-pink-600 mt-4">Saya sangat senang! 😊</p>
-        <div class="mt-6">
-            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e705dcc1-4feb-4b91-8a67-d1c359f55387.png" alt="Romantic heart-shaped bouquet of pink roses with soft lighting and water droplets for a dreamy, loving atmosphere" class="mx-auto rounded-lg shadow-md" />
-        </div>
+    <div class="copy-box">
+        <div class="copy-text" id="t4">Teks contoh yang bisa disalin 4...</div>
+        <button class="copy-btn" onclick="copyText('t4')">Salin</button>
     </div>
 
-    <script>
-        let userName;
+    <div class="copy-box">
+        <div class="copy-text" id="t5">Teks contoh yang bisa disalin 5...</div>
+        <button class="copy-btn" onclick="copyText('t5')">Salin</button>
+    </div>
 
-        function startConfess() {
-            userName = document.getElementById('userName').value;
-            if (!userName) {
-                alert('Masukkan nama kamu dulu ya!');
-                return;
-            }
-            document.getElementById('nameForm').classList.add('hidden');
-            document.getElementById('nameDisplay').textContent = userName;
-            document.getElementById('welcomeMessage').classList.remove('hidden');
+    <div class="copy-box">
+        <div class="copy-text" id="t6">Teks contoh yang bisa disalin 6...</div>
+        <button class="copy-btn" onclick="copyText('t6')">Salin</button>
+    </div>
 
-            setTimeout(() => {
-                document.getElementById('welcomeMessage').classList.add('hidden');
-                document.getElementById('confessPage').classList.remove('hidden');
-            }, 3000);
-        }
+</div>
 
-        function moveButton() {
-            const button = document.getElementById('noButton');
-            const x = Math.random() * (window.innerWidth - 100);
-            const y = Math.random() * (window.innerHeight - 50);
-            button.style.left = `${x}px`;
+<script>
+    function copyText(id) {
+        const text = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(text);
+        alert("Teks berhasil disalin!");
+    }
+</script>
+
+</body>
+</html>            button.style.left = `${x}px`;
             button.style.top = `${y}px`;
             button.style.position = 'absolute';
         }
