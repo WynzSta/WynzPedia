@@ -19,6 +19,6 @@ export default function handler(req, res) {
         name,
         email,
         key_status: "OK",
-        url: `https://example.com/panel/${name}`
+        url: `https://asy-mode-sad.zebuildd.cloud/${name}`
     });
 }
