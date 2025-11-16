@@ -4,7 +4,7 @@ export default function handler(req, res) {
     }
 
     // API KEY dari Environment Variable (AMAN)
-    const SECRET_KEY = process.env.PANEL_KEY;
+    const SECRET_KEY = "ptla_HxwD2dEiZg26gx2UGrldt4map0y7npbUxJFA8bp2jq1";
 
     if (!SECRET_KEY) {
         return res.status(500).json({ error: "API KEY not set" });
